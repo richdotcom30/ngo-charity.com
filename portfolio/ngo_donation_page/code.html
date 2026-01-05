@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NGO Donation Page</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4cdf20",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#152111",
+                        "surface-dark": "#20321b",
+                        "border-green": "#2d4625",
+                        "text-muted": "#a0c695"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "2xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #152111; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d4625; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4cdf20; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-x-hidden antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Navbar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-b-border-green bg-background-dark/95 backdrop-blur-md px-6 py-4 md:px-10">
+<div class="flex items-center gap-3 text-white">
+<div class="flex size-8 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined !text-[20px]">volunteer_activism</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">NGO Australia</h2>
+</div>
+<!-- Mobile Menu Icon (Visible on small screens) -->
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Desktop Nav (Hidden on small screens) -->
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-8">
+<a class="text-white/80 hover:text-white text-sm font-medium transition-colors" href="#">Our Mission</a>
+<a class="text-white/80 hover:text-white text-sm font-medium transition-colors" href="#">Impact</a>
+<a class="text-white/80 hover:text-white text-sm font-medium transition-colors" href="#">Stories</a>
+<a class="text-white/80 hover:text-white text-sm font-medium transition-colors" href="#">Contact</a>
+</nav>
+<button class="group flex min-w-[100px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-5 bg-primary text-background-dark text-sm font-bold leading-normal tracking-wide transition-all hover:bg-[#3ec01a] hover:shadow-[0_0_15px_rgba(76,223,32,0.4)]">
+<span class="truncate">Donate</span>
+</button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 flex flex-col lg:flex-row">
+<!-- Left Side: Emotional Imagery & Hero Content -->
+<div class="relative lg:w-5/12 xl:w-1/2 flex flex-col justify-end p-6 lg:p-12 lg:sticky lg:top-[73px] lg:h-[calc(100vh-73px)] overflow-hidden group">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-[20s] ease-linear group-hover:scale-110" data-alt="Close up warm portrait of an Australian volunteer helping a child in a rural community" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA4aekiMXkaWr1Y0DzflciWYXVm0rgQ7ecP335QSr5Cniyj6W3DPY84kU5yQQNoz9Rgwi8TzyAZydFAsDtFai9CbVrWRZRvqLy_5OB7wyUOoUy8tP3RGqsdEUCyrYpdHUgkL_exWSN09DvdCI6m37PhHbbtHFpgcXqZqevVUGoMh8YSVfedvZmzTSCL_3IWy2cFGr8gTCsc5axTJufrdWXsXips9ywammPAWUOyEnnL6JGPOWfb73P3O3y0w-FcSldzpqUQWSe7P6w");'>
+</div>
+<div class="absolute inset-0 z-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+<!-- Text Content -->
+<div class="relative z-10 flex flex-col gap-4 max-w-lg mb-8 lg:mb-12 animate-[fadeIn_1s_ease-out]">
+<div class="inline-flex items-center gap-2 self-start rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm border border-white/10">
+<span class="material-symbols-outlined text-[16px] text-primary">public</span>
+                        National Emergency Relief
+                    </div>
+<h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight">
+                        Empower Change in <span class="text-primary">Australia</span> Today.
+                    </h1>
+<p class="text-white/80 text-lg md:text-xl font-normal leading-relaxed max-w-md">
+                        Your contribution brings immediate relief and long-term hope. 100% of your donation goes directly to the field.
+                    </p>
+<div class="flex items-center gap-4 mt-4">
+<div class="flex -space-x-3">
+<div class="size-10 rounded-full border-2 border-background-dark bg-gray-300 bg-cover" data-alt="avatar of donor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6ceBV0Og-QanBQUhChr6SsuVRuT30DnJPm5ys8wGtQ2Nnam8NYTWdv4NAOwVgRWj_85QDz4ZoHzdc6oG-Qd0PJKeZfn3JA1DJRQziqSrwGFn3otb0NjCFtHg7h5Ufo4mWb-T8nX97ku4OIgNx-fN_i589a9VjeRcxG52OjntXDeHasY5dXoYPggF-h1_H9cXh_nn9c5Wh-Oj55zr1ARHS97qrKci5LjXKa4cy21OTTapxaVunQhh0qQu6YxrNgDJ_LKyI0dOb8KA")'></div>
+<div class="size-10 rounded-full border-2 border-background-dark bg-gray-300 bg-cover" data-alt="avatar of donor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfa-UbkAFr-Ppkr4fMk1yEwTbDlPluQLFUIjWt5YXtXd_isZVB4EHvv_yb4zJvtGesHwZK8J84Ru-AgU1fyGpE9OJWbVwuQlQnV4aM46uToe13BlbIIoiNbp96e8_I6weTyUnU-6aT6CU5EdvAFdji2GVBzAW3gmRTerX3MR_RQ9BfdwxHYWf2OpqJEV0Dklp1E-grhLG07P7d0I7v1TljOY4NfzNxCMoFOwpWMX3kBiCORN4uj0GSkdRytmL8YnnPFVSaNeaZKTY")'></div>
+<div class="size-10 rounded-full border-2 border-background-dark bg-gray-300 bg-cover" data-alt="avatar of donor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLJodppxcJ5Ef6UykpYGVSl3URv7EcewrUUAJlY48uxG5kS0VQmbKQspy8ptOh_Org5Yn6viLsti4TF_tWPxqD1tNASr9TvDablBHU3lSfUeNRoawwTpDuCjfkRIXQ07U23wb3Z4A9yprPLW0z4yctG1rPMjBrYS6dH5oCjrl004AG5ahpDFgL645jKPKNJ3uAmQ26Ookc46MMTvDlfLrTXr7ugQk4HzaVg978TdNKFSmRIYHKgcs9EjRUHt1CsNMVnyh6w3vRPZQ")'></div>
+</div>
+<p class="text-sm font-medium text-white/70">Joined by <span class="text-white font-bold">12,403</span> Australians this week</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Donation Form Widget -->
+<div class="flex-1 bg-background-dark lg:border-l border-border-green">
+<div class="mx-auto max-w-2xl px-4 py-10 md:px-8 lg:py-12">
+<!-- Secure Header -->
+<div class="mb-8 flex items-center justify-between">
+<h3 class="text-2xl font-bold text-white">Make a Donation</h3>
+<div class="flex items-center gap-2 text-text-muted text-sm">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+                            Secure Payment
+                        </div>
+</div>
+<!-- Frequency Toggle -->
+<div class="mb-8 p-1.5 bg-surface-dark rounded-full inline-flex w-full sm:w-auto border border-border-green">
+<label class="cursor-pointer relative flex-1 sm:flex-none">
+<input checked="" class="peer sr-only" name="frequency" type="radio" value="once"/>
+<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-text-muted transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white">
+                                Give Once
+                            </div>
+</label>
+<label class="cursor-pointer relative flex-1 sm:flex-none">
+<input class="peer sr-only" name="frequency" type="radio" value="monthly"/>
+<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-text-muted transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">favorite</span> Monthly
+                            </div>
+</label>
+</div>
+<!-- Amount Selection Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<!-- Option 1 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="amount" type="radio" value="20"/>
+<div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
+<div class="flex justify-between items-start">
+<span class="text-2xl font-black text-white">$20</span>
+<div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<p class="text-xs text-text-muted leading-tight">Feeds a family for a day</p>
+</div>
+</label>
+<!-- Option 2 (Popular) -->
+<label class="cursor-pointer group relative">
+<input checked="" class="peer sr-only" name="amount" type="radio" value="50"/>
+<span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide shadow-sm z-10">Popular</span>
+<div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
+<div class="flex justify-between items-start">
+<span class="text-2xl font-black text-white">$50</span>
+<div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<p class="text-xs text-text-muted leading-tight">Emergency shelter kit</p>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="amount" type="radio" value="100"/>
+<div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
+<div class="flex justify-between items-start">
+<span class="text-2xl font-black text-white">$100</span>
+<div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<p class="text-xs text-text-muted leading-tight">School supplies for a child</p>
+</div>
+</label>
+<!-- Option 4 -->
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="amount" type="radio" value="250"/>
+<div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
+<div class="flex justify-between items-start">
+<span class="text-2xl font-black text-white">$250</span>
+<div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
+<div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
+</div>
+</div>
+<p class="text-xs text-text-muted leading-tight">Community building fund</p>
+</div>
+</label>
+</div>
+<!-- Custom Amount Input -->
+<div class="mb-8">
+<div class="relative group">
+<label class="sr-only" for="custom-amount">Custom Amount</label>
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="text-white text-lg font-bold">$</span>
+</div>
+<input class="block w-full rounded-2xl border border-border-green bg-surface-dark pl-10 pr-20 py-4 text-white placeholder-text-muted focus:border-primary focus:ring-1 focus:ring-primary text-lg font-medium transition-all group-hover:border-primary/50" id="custom-amount" placeholder="Enter custom amount" type="number"/>
+<div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+<span class="text-text-muted font-medium">AUD</span>
+</div>
+</div>
+</div>
+<!-- Personal Information -->
+<div class="mb-8 space-y-4">
+<h4 class="text-white font-bold text-lg">Your Details</h4>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="First Name" type="text"/>
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="Last Name" type="text"/>
+</div>
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="Email Address" type="email"/>
+</div>
+<!-- Submit Button -->
+<button class="w-full group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-primary px-8 py-5 text-background-dark font-black text-lg shadow-[0_4px_30px_rgba(76,223,32,0.2)] transition-all hover:bg-[#3ec01a] hover:shadow-[0_4px_40px_rgba(76,223,32,0.4)] hover:-translate-y-0.5 active:translate-y-0">
+<span>Donate Now</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<!-- Trust Indicators -->
+<div class="mt-8 flex flex-col items-center gap-6 border-t border-border-green pt-8">
+<p class="text-center text-xs text-text-muted">
+                            All donations are tax-deductible in Australia. We are a registered charity.
+                        </p>
+<div class="flex flex-wrap justify-center items-center gap-6 opacity-60 grayscale transition-all hover:grayscale-0 hover:opacity-100">
+<!-- Using text placeholders styled like logos for demonstration -->
+<div class="flex items-center gap-1 font-bold text-white text-sm">
+<span class="material-symbols-outlined text-xl">security</span>
+                                SSL Secure
+                            </div>
+<div class="flex items-center gap-1 font-bold text-white text-sm">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+                                Verified Charity
+                            </div>
+<div class="flex items-center gap-1 font-bold text-white text-sm">
+<span class="material-symbols-outlined text-xl">payments</span>
+                                Stripe Protected
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>

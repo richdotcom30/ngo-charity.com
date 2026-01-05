@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: #4cdf20;
+    --color-primary-dark: #3bb517;
+    --color-accent-brown: #8D6E63;
+    --color-accent-brown-dark: #5D4037;
+    --color-background-light: #f6f8f6;
+    --color-background-dark: #152111;
+    --color-surface-dark: #1e2f1b;
+}
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Custom scrollbar for clean look */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #152111;
+}
+::-webkit-scrollbar-thumb {
+    background: #2d4625;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #4cdf20;
+}
+
+.glass-nav {
+    background: rgba(21, 33, 17, 0.85);
+    backdrop-filter: blur(12px);
+}
+
+/* CSS Animations for Marquee and Shimmer */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+@keyframes shimmer {
+    0% { transform: translateX(-150%); }
+    100% { transform: translateX(150%); }
+}

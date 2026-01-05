@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Volunteer - Australian NGO</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4cdf20",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#152112",
+                        "surface-dark": "#20321b",
+                        "surface-highlight": "#2d4625",
+                        "text-secondary": "#a0c695",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #152112; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d4625; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4cdf20; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden selection:bg-primary selection:text-background-dark">
+<div class="flex min-h-screen w-full flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-surface-highlight bg-background-dark/95 backdrop-blur-sm px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-3 text-white">
+<div class="size-8 text-primary">
+<svg class="h-full w-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] hidden sm:block">Australian NGO</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-white/80 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Home</a>
+<a class="text-white/80 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">About Us</a>
+<a class="text-white/80 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Programs</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Volunteer</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64 group">
+<div class="flex w-full flex-1 items-stretch rounded-full h-full border border-surface-highlight group-focus-within:border-primary/50 transition-colors">
+<div class="text-text-secondary flex border-none bg-transparent items-center justify-center pl-4 rounded-l-full border-r-0">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-full text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-text-secondary px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search opportunities" value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary hover:bg-[#3bc215] transition-colors text-background-dark text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Donate</span>
+</button>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow">
+<!-- HeroSection -->
+<section class="relative w-full py-6 px-4 md:px-10 lg:px-20 xl:px-40">
+<div class="max-w-[1200px] mx-auto">
+<div class="relative overflow-hidden rounded-3xl min-h-[500px] flex flex-col items-center justify-center text-center p-6 md:p-12 gap-6 bg-cover bg-center" data-alt="Diverse group of volunteers planting trees in Australian outback" style='background-image: linear-gradient(rgba(21, 33, 18, 0.4), rgba(21, 33, 18, 0.7)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3-MCyzlk6eVqaqyLRisZyFN-ikekfdULjq441wiiqlkklYkVJKzf4007i6hbncSawFKy9Ifm5I5Q5fzxcUXxFFWsnW352v-ZGiqFDc6eTr0jnsmO8YV65d2-JCZjOQOwj3IxBGNk-BAUNWVseNO0f05QyaPBo2emrIW2adgx8ND59mk9CLIbYeJ9VfbF4eR_q642hAGIbtrZLY3touQPCwRucke8JmAWaQPaz5BTb051JKka3LhKVj0JmHcKRTyfWFTVjjEO-LGw");'>
+<div class="flex flex-col gap-4 max-w-2xl z-10">
+<span class="inline-block mx-auto px-4 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-bold uppercase tracking-wider backdrop-blur-md">Join the movement</span>
+<h1 class="text-white text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-[-0.033em]">
+                                Lend a Hand, <span class="text-primary">Change a Life</span>
+</h1>
+<p class="text-white/90 text-base md:text-lg font-medium leading-relaxed max-w-lg mx-auto">
+                                Join Australia’s most dedicated community of changemakers. From Sydney to the Outback, your time makes a world of difference.
+                            </p>
+</div>
+<div class="flex flex-wrap gap-4 justify-center z-10 pt-4">
+<a class="flex items-center justify-center rounded-full h-12 px-8 bg-primary text-background-dark text-base font-bold transition-transform hover:scale-105" href="#opportunities">
+                                View Opportunities
+                            </a>
+<button class="flex items-center justify-center rounded-full h-12 px-8 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-base font-bold hover:bg-white/20 transition-colors">
+                                Watch Video <span class="material-symbols-outlined ml-2 text-xl">play_circle</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats -->
+<section class="py-10 px-4 md:px-10 lg:px-20 xl:px-40">
+<div class="max-w-[1200px] mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
+<div class="flex flex-col gap-2 rounded-2xl p-6 md:p-8 bg-surface-dark border border-surface-highlight hover:border-primary/30 transition-colors group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Volunteers Mobilized</p>
+<p class="text-white text-3xl md:text-4xl font-bold leading-tight">5,000+</p>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-6 md:p-8 bg-surface-dark border border-surface-highlight hover:border-primary/30 transition-colors group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Hours Donated</p>
+<p class="text-white text-3xl md:text-4xl font-bold leading-tight">120k+</p>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-6 md:p-8 bg-surface-dark border border-surface-highlight hover:border-primary/30 transition-colors group">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Lives Impacted</p>
+<p class="text-white text-3xl md:text-4xl font-bold leading-tight">50,000</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Split Section: Opportunities & Application Form -->
+<section class="py-10 px-4 md:px-10 lg:px-20 xl:px-40" id="opportunities">
+<div class="max-w-[1200px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Opportunities List -->
+<div class="lg:col-span-7 flex flex-col gap-8">
+<div>
+<h2 class="text-white text-3xl font-bold leading-tight mb-2">Current Opportunities</h2>
+<p class="text-text-secondary">Find a role that fits your skills and schedule.</p>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Card 1 -->
+<div class="group flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-surface-dark border border-surface-highlight hover:border-primary/50 transition-all shadow-sm hover:shadow-[0_0_15px_rgba(76,223,32,0.1)]">
+<div class="sm:w-48 h-48 sm:h-auto bg-cover bg-center" data-alt="Mentor helping young student with homework" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBkXa9Fi001D18aMEjbtE_eOf0Jzt7GZyej_h3UUU3MLqiCISnrS4nXO7RFT_q0X-JrSc6acbMW7IPSWunx0MuCRnEKx4YTypNfm5CfaothVxpdILLVcercIk7aKuMfhrBqt0e10M5Wzvl4NneVzxVzU9747KDTHXZ6Ao5Ki72JfxFdDoVgAEtMmZl7LBMlW-_HRgluryAg0qkUyGfKFfPUXj4-KcQVh0V8HYFpYaVaDjsZ7PWH0-i0zua8HuiShWHlyHq6l5tmVI8");'></div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-xl font-bold">Youth Mentor</h3>
+<span class="bg-surface-highlight text-primary text-xs px-2 py-1 rounded-md font-bold uppercase">Weekly</span>
+</div>
+<div class="flex items-center gap-1 text-text-secondary text-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Sydney, NSW
+                                            </div>
+<p class="text-white/80 text-sm mb-4 leading-relaxed line-clamp-2">
+                                                Support young people in building resilience and confidence through weekly mentorship sessions. Make a lasting impact on a child's future.
+                                            </p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 rounded-full bg-primary text-background-dark text-sm font-bold py-2 px-4 hover:bg-[#3bc215] transition-colors">Apply Now</button>
+<button class="rounded-full border border-surface-highlight text-white hover:bg-surface-highlight py-2 px-3 transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-surface-dark border border-surface-highlight hover:border-primary/50 transition-all shadow-sm hover:shadow-[0_0_15px_rgba(76,223,32,0.1)]">
+<div class="sm:w-48 h-48 sm:h-auto bg-cover bg-center" data-alt="Volunteer organizing clothes at donation center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtBkUScYTHi8ZV0oTj4WM1oA6-MdBttIUrNSFNHCwYoymq2y6U8OB8BVP0Sc-gyJXBsIZLSGovUFmMuxJSBM8RL-J5WJxPmKgdbgAYqTYFSZ-rY62jEqFsj5lCnE2TcCJDXbYFo0aFSJfjlQlhmN_k3CaZ5ZrMmVUBIpzm5jdIspOpyxX35V7WmoyRH97aqQ8O1U9fbCkT7HGBhW7eWSIJfZk_dyh9oYuo2uDcGR9HwNDsJS_fBn4gxaUBPooBLtDDK4XkkSvTpcg");'></div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-xl font-bold">Shelter Support</h3>
+<span class="bg-surface-highlight text-primary text-xs px-2 py-1 rounded-md font-bold uppercase">Weekends</span>
+</div>
+<div class="flex items-center gap-1 text-text-secondary text-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Melbourne, VIC
+                                            </div>
+<p class="text-white/80 text-sm mb-4 leading-relaxed line-clamp-2">
+                                                Assist in the daily operations of our community shelter. Help with meal preparation, sorting donations, and greeting guests.
+                                            </p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 rounded-full bg-primary text-background-dark text-sm font-bold py-2 px-4 hover:bg-[#3bc215] transition-colors">Apply Now</button>
+<button class="rounded-full border border-surface-highlight text-white hover:bg-surface-highlight py-2 px-3 transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-surface-dark border border-surface-highlight hover:border-primary/50 transition-all shadow-sm hover:shadow-[0_0_15px_rgba(76,223,32,0.1)]">
+<div class="sm:w-48 h-48 sm:h-auto bg-cover bg-center" data-alt="Person working on laptop remotely" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlZO573CE6zPoTJjCJmPk0cH4jLkEI1PdnlYlTT3sYeHI_GBeOFoMhHYIDZhs0PNF7_fvX9r0k_IrQa-ukRc1oVXzMuahjM3DWwGPc3-e1FlYaNJLESuk4Fll6sxaPsu1St_CKbi9ucsTiYo0v5smAtMJBc8w1k03_C6ncc3RcH8wSE49KxOklYGD_PdDl7k45G2ZdGXNalXlxJb-495l-VRM7ovOZNha1toU_qI5p6ZW9M8aN2D_MYa6GcyR-lxAeH7rAwig3XUU");'></div>
+<div class="flex-1 p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-xl font-bold">Fundraising Assistant</h3>
+<span class="bg-surface-highlight text-primary text-xs px-2 py-1 rounded-md font-bold uppercase">Flexible</span>
+</div>
+<div class="flex items-center gap-1 text-text-secondary text-sm mb-3">
+<span class="material-symbols-outlined text-[16px]">wifi</span> Remote / Australia Wide
+                                            </div>
+<p class="text-white/80 text-sm mb-4 leading-relaxed line-clamp-2">
+                                                Help us organize digital campaigns and connect with donors. Perfect for those with strong communication and organizational skills.
+                                            </p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 rounded-full bg-primary text-background-dark text-sm font-bold py-2 px-4 hover:bg-[#3bc215] transition-colors">Apply Now</button>
+<button class="rounded-full border border-surface-highlight text-white hover:bg-surface-highlight py-2 px-3 transition-colors">
+<span class="material-symbols-outlined text-sm">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-4">
+<button class="text-primary font-bold text-sm hover:underline">View All Opportunities</button>
+</div>
+</div>
+<!-- Right Column: Quick Application Form (Sticky) -->
+<div class="lg:col-span-5 relative">
+<div class="lg:sticky lg:top-24 bg-[#1a2617] rounded-3xl p-6 border border-surface-highlight shadow-xl">
+<div class="mb-6">
+<h3 class="text-white text-xl font-bold mb-1">Quick Application</h3>
+<p class="text-text-secondary text-sm">Start your journey in 3 easy steps.</p>
+<!-- Progress Bar -->
+<div class="flex items-center gap-2 mt-4">
+<div class="h-1.5 flex-1 rounded-full bg-primary"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-highlight"></div>
+<div class="h-1.5 flex-1 rounded-full bg-surface-highlight"></div>
+</div>
+</div>
+<form class="flex flex-col gap-5">
+<!-- Step 1: Personal Info -->
+<div class="space-y-4">
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined">person</span>
+<input class="w-full bg-surface-dark border border-surface-highlight text-white text-sm rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-text-secondary/50" placeholder="Full Name" type="text"/>
+</div>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined">email</span>
+<input class="w-full bg-surface-dark border border-surface-highlight text-white text-sm rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-text-secondary/50" placeholder="Email Address" type="email"/>
+</div>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined">call</span>
+<input class="w-full bg-surface-dark border border-surface-highlight text-white text-sm rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-text-secondary/50" placeholder="Phone Number" type="tel"/>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full rounded-full bg-primary text-background-dark font-bold py-3.5 hover:bg-[#3bc215] transition-colors flex items-center justify-center gap-2 group" type="button">
+                                            Next Step
+                                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-text-secondary mt-3">
+                                            By continuing, you agree to our <a class="underline hover:text-white" href="#">Privacy Policy</a>.
+                                        </p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-16 bg-surface-dark/30 border-y border-surface-highlight">
+<div class="px-4 md:px-10 lg:px-20 xl:px-40 max-w-[1200px] mx-auto">
+<div class="text-center mb-12">
+<h2 class="text-white text-3xl font-bold leading-tight mb-3">Voices from the Community</h2>
+<p class="text-text-secondary">Hear from the people who make it all possible.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Testimonial 1 -->
+<div class="bg-surface-dark p-8 rounded-3xl border border-surface-highlight relative">
+<span class="material-symbols-outlined text-6xl text-surface-highlight absolute top-6 right-6 opacity-50">format_quote</span>
+<div class="flex items-center gap-4 mb-6">
+<div class="size-14 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of Sarah J, a volunteer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADrfcSUy_EI01Qy2wSAkcLDnPiCppnNd3bt0gKIYJqxalBk-jMfLTA74mLdlkP7RyBDdfK5tZ_g0sOKpxXHW5qSp-OySKrZ5pskyRU0-uADLcuR08jKRqChiiwtmbgTToYhU-NfrxGCa7VDS4rxRfn2b8N_9VDVcmL2bEIAmOInbVyIEsTq6n-e1cn1YGHkcPTKhycr4CmDdEHdlG2UQLX7fwDn5FHqrHo4XRyYy0EbXMAKM4WkzUFqmimI8M1GrY6qaRy5KrZReI");'></div>
+<div>
+<h4 class="text-white font-bold text-lg">Sarah J.</h4>
+<p class="text-text-secondary text-sm">Sydney Volunteer</p>
+</div>
+</div>
+<p class="text-white/90 italic leading-relaxed">
+                                "Volunteering here gave me more than I gave. It’s a family. I’ve met incredible people and learned skills I use in my daily job."
+                            </p>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-dark p-8 rounded-3xl border border-surface-highlight relative">
+<span class="material-symbols-outlined text-6xl text-surface-highlight absolute top-6 right-6 opacity-50">format_quote</span>
+<div class="flex items-center gap-4 mb-6">
+<div class="size-14 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of Michael T, a volunteer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCWgYHE87-xHUj4_aQ865IZD0KldLksqcYVci-VDfEDZoggOsUfX9ty563jE3bKmDg1vLWshsqh4mW_P7ZK4oqk9JzXx_c3-HguJC72I70tUW03vPszhmTLe28ich1hkmXzFbzduNkAevaNWVMXagXEWU0R0FRaOIeq0xHbhr__6KWCuN__jycSs0qaJbbeF-WR7urld7_AVmITFAzW0hh_Fv9WmstUBLS8US6rdl7Vp_JVdm1iSmCkrLP0NCx1pfcJkDIaadjZofI");'></div>
+<div>
+<h4 class="text-white font-bold text-lg">Michael T.</h4>
+<p class="text-text-secondary text-sm">Remote Coordinator</p>
+</div>
+</div>
+<p class="text-white/90 italic leading-relaxed">
+                                "The flexibility is amazing. I can contribute from home while balancing my studies. Knowing I'm making a difference is the best feeling."
+                            </p>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-dark p-8 rounded-3xl border border-surface-highlight relative hidden lg:block">
+<span class="material-symbols-outlined text-6xl text-surface-highlight absolute top-6 right-6 opacity-50">format_quote</span>
+<div class="flex items-center gap-4 mb-6">
+<div class="size-14 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of Elena R, a volunteer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBliFhuOa3-dWhGiEhZWFMg8CA2p8Kgx0iv5xCS__00Z9j1nBkZfyPdLNfAfLtUxpwYhycJvBZMauU_-bT0j-yrKpZe_90wdUzxxfocVSBUknAMz0eue84IgIhPykbIXFmFOScb0X0bueZ9BSedRd4iZxxLB_wlAyzYtBtr8leaFRHI4gvnWaDE2mtVb3IgNavoYvBtUu1QlMeED9kJ91uySTbmRQ2PncXtkZTPDhZUS42FLw5QVxS8wIk0AknzDhviyf1CL2lLDis");'></div>
+<div>
+<h4 class="text-white font-bold text-lg">Elena R.</h4>
+<p class="text-text-secondary text-sm">Event Support</p>
+</div>
+</div>
+<p class="text-white/90 italic leading-relaxed">
+                                "The events are so well organized and fun! You really feel part of a team working towards a common goal. Highly recommend joining."
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-16 px-4 md:px-10 lg:px-20 xl:px-40">
+<div class="max-w-[800px] mx-auto">
+<h2 class="text-white text-2xl font-bold leading-tight mb-8 text-center">Frequently Asked Questions</h2>
+<div class="flex flex-col gap-4">
+<details class="group bg-surface-dark rounded-2xl border border-surface-highlight overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none text-white font-medium hover:text-primary transition-colors">
+<span>Do I need specific qualifications to volunteer?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-text-secondary text-sm leading-relaxed">
+                                Not necessarily! Many roles require enthusiasm and a willingness to learn rather than specific degrees. However, some specialized roles (like counselling) may require certifications, which will be listed in the job description.
+                            </div>
+</details>
+<details class="group bg-surface-dark rounded-2xl border border-surface-highlight overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none text-white font-medium hover:text-primary transition-colors">
+<span>Is there an age limit for volunteers?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-text-secondary text-sm leading-relaxed">
+                                generally, volunteers must be at least 18 years old. However, we have a specific youth program for teenagers aged 15-17 with parental consent.
+                            </div>
+</details>
+<details class="group bg-surface-dark rounded-2xl border border-surface-highlight overflow-hidden">
+<summary class="flex justify-between items-center p-5 cursor-pointer list-none text-white font-medium hover:text-primary transition-colors">
+<span>What is the minimum time commitment?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-5 pb-5 text-text-secondary text-sm leading-relaxed">
+                                It varies by role. Some event-based roles are one-off, while mentorship programs typically require a commitment of 2-4 hours per week for at least 6 months to ensure stability for our clients.
+                            </div>
+</details>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-[#0f180d] border-t border-surface-highlight py-12 px-6 lg:px-20 text-center md:text-left">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col gap-4 items-center md:items-start">
+<div class="flex items-center gap-3 text-white">
+<div class="size-6 text-primary">
+<svg class="h-full w-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold">Australian NGO</h2>
+</div>
+<p class="text-text-secondary text-sm max-w-xs">Building a better future for all Australians, one hand at a time.</p>
+</div>
+<div class="flex gap-8 text-sm font-medium text-white/80">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+<a class="hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-surface-highlight flex items-center justify-center text-white hover:bg-primary hover:text-background-dark transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-surface-highlight flex items-center justify-center text-white hover:bg-primary hover:text-background-dark transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+<a class="size-10 rounded-full bg-surface-highlight flex items-center justify-center text-white hover:bg-primary hover:text-background-dark transition-colors" href="#">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.48 2h-.165zm-2.95 2.137c-1.383 0-2.512 1.129-2.512 2.512S7.982 9.16 9.365 9.16s2.512-1.129 2.512-2.512-1.129-2.512-2.512-2.512zm7.422 1.938a1.44 1.44 0 110 2.88 1.44 1.44 0 010-2.88zm-5.917 5.707a4.237 4.237 0 110 8.475 4.237 4.237 0 010-8.475z" fill-rule="evenodd"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

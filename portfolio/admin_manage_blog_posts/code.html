@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NGO Admin - Manage Blog Posts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:wght@300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4cdf20",
+                        "primary-hover": "#3bbd15",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#131711",
+                        "surface-dark": "#1c2319",
+                        "surface-dark-lighter": "#2d3829",
+                        "text-secondary": "#a4b79e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131711; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3829; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4cdf20; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-row">
+<!-- Sidebar Navigation -->
+<aside class="sticky top-0 h-screen w-72 flex-col justify-between border-r border-[#2d3829] bg-background-dark p-6 hidden lg:flex">
+<div class="flex flex-col gap-8">
+<!-- Logo Area -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center rounded-full bg-primary/20 p-2">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">volunteer_activism</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold tracking-tight">Unity<span class="text-primary">Australia</span></h1>
+<p class="text-text-secondary text-xs font-medium">NGO Admin Panel</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 rounded-lg px-3 py-3 text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" style="font-size: 22px;">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg bg-surface-dark-lighter px-3 py-3 text-white shadow-sm ring-1 ring-white/5" href="#">
+<span class="material-symbols-outlined filled" style="font-size: 22px; font-variation-settings: 'FILL' 1;">article</span>
+<span class="text-sm font-medium">Blog Posts</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-3 text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" style="font-size: 22px;">favorite</span>
+<span class="text-sm font-medium">Donations</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-3 text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" style="font-size: 22px;">groups</span>
+<span class="text-sm font-medium">Volunteers</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-3 text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" style="font-size: 22px;">campaign</span>
+<span class="text-sm font-medium">Campaigns</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-3 text-text-secondary hover:bg-surface-dark-lighter hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined" style="font-size: 22px;">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- User Profile & Logout -->
+<div class="flex flex-col gap-4 border-t border-[#2d3829] pt-6">
+<div class="flex items-center gap-3 rounded-xl bg-surface-dark p-3">
+<div class="h-10 w-10 overflow-hidden rounded-full bg-slate-700 bg-center bg-cover" data-alt="Admin user profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3VVsYDhvZdCGawqe_G2H6v7adCtuAZRw4dThKtqHIHjf-nMrLUcsTnqBDnnfykIpU_lxIP4-ilMgUR-4jVwjaJhgcfNFEH_2g2yXdAJoAGWUvzTeanxE0yAyLYa6zmJox1PuIXhnYlQ7oBNhI7ARjfSa-HZfgqeQLZ2pLxZJyGnvoq4-yjfY6T-tN1CsZ7e4kkUfvF8luu7tq5LpWsoa_LnYZxrecJKW5_1FgcYIIQ5RfMdwrGyzG1J5QL-YqUza3h4pzI7IxDr4");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-white">Sarah Jenkins</p>
+<p class="text-xs text-text-secondary">Content Manager</p>
+</div>
+</div>
+<button class="flex w-full items-center justify-center gap-2 rounded-lg bg-surface-dark-lighter py-2.5 text-sm font-bold text-text-secondary hover:bg-red-500/10 hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+                    Logout
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Mobile Header -->
+<header class="flex lg:hidden items-center justify-between p-4 border-b border-[#2d3829] bg-background-dark">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">volunteer_activism</span>
+<span class="text-white font-bold">UnityAU</span>
+</div>
+<button class="text-white p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="p-6 md:p-10 max-w-7xl mx-auto w-full flex flex-col gap-8">
+<!-- Page Heading & Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-sm text-text-secondary mb-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">dashboard</span>
+<span>Dashboard</span>
+<span>/</span>
+<span class="text-white">Blog</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Manage Stories</h1>
+<p class="text-slate-500 dark:text-text-secondary max-w-xl">Share impact stories, community updates, and news from the field across Australia.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden md:flex items-center justify-center h-11 w-11 rounded-lg border border-[#2d3829] bg-surface-dark text-text-secondary hover:text-white hover:border-white/20 transition-all" title="View Published Site">
+<span class="material-symbols-outlined">public</span>
+</button>
+<button class="flex items-center gap-2 h-11 px-5 rounded-lg bg-primary text-background-dark text-sm font-bold hover:bg-primary-hover shadow-[0_0_15px_rgba(76,223,32,0.3)] transition-all transform active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 20px;">add_circle</span>
+                            Create New Post
+                        </button>
+</div>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="flex flex-col gap-1 p-5 rounded-xl border border-[#2d3829] bg-surface-dark relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-size: 64px;">article</span>
+</div>
+<p class="text-text-secondary text-sm font-medium">Total Posts</p>
+<div class="flex items-end gap-3">
+<p class="text-white text-3xl font-bold">142</p>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">+12%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 p-5 rounded-xl border border-[#2d3829] bg-surface-dark relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-blue-400" style="font-size: 64px;">visibility</span>
+</div>
+<p class="text-text-secondary text-sm font-medium">Total Views (This Month)</p>
+<div class="flex items-end gap-3">
+<p class="text-white text-3xl font-bold">8.4k</p>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">+5%</span>
+</div>
+</div>
+<div class="flex flex-col gap-1 p-5 rounded-xl border border-[#2d3829] bg-surface-dark relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-orange-400" style="font-size: 64px;">edit_document</span>
+</div>
+<p class="text-text-secondary text-sm font-medium">Pending Drafts</p>
+<div class="flex items-end gap-3">
+<p class="text-white text-3xl font-bold">5</p>
+</div>
+</div>
+</div>
+<!-- Main Content Panel -->
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Left: Post List & Filters -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Search & Filters -->
+<div class="flex flex-col md:flex-row gap-4">
+<div class="relative flex-1">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined">search</span>
+<input class="w-full h-12 pl-12 pr-4 rounded-lg bg-surface-dark border border-[#2d3829] text-white placeholder-text-secondary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search posts by title, author..." type="text"/>
+</div>
+<select class="h-12 px-4 rounded-lg bg-surface-dark border border-[#2d3829] text-white focus:outline-none focus:border-primary cursor-pointer min-w-[160px]">
+<option>All Categories</option>
+<option>Community Stories</option>
+<option>Fundraising</option>
+<option>Field Updates</option>
+</select>
+<select class="h-12 px-4 rounded-lg bg-surface-dark border border-[#2d3829] text-white focus:outline-none focus:border-primary cursor-pointer min-w-[140px]">
+<option>All Status</option>
+<option>Published</option>
+<option>Draft</option>
+<option>Scheduled</option>
+</select>
+</div>
+<!-- Posts List -->
+<div class="flex flex-col gap-3">
+<!-- Post Item 1 (Published) -->
+<div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
+<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Children playing in a community center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBriSoZN-tmpSj6nmgPd8j3q19zsfDdUeTq38FYDLnl0dSc9wYvh6gSQuuDwLUnyaI4-kulV8Xg0Tb5rkdzpTHxVZNPi-6x-mM6oXJbnw19qnVRqnforRryB4qiNmxoD9DzoXJyKKJLQiTW0xHJzlUlAx45B7Feq7cRKMb74lJKbgnq8dpMrw2tux5YdfmUt6Qgg4hGWhry7dbofaxBv4-jmmyEZBo-jQ2TQtYhR3yAUUIYMyaJR0ENgH7xyCzaX4KEWuy_4ZPxOgA");'></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">Published</span>
+<span class="text-xs text-text-secondary">Oct 24, 2023 • Community</span>
+</div>
+<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Rebuilding Hope: The Queensland Project</h3>
+<p class="text-text-secondary text-sm mt-1 truncate">An update on how our volunteers are making a difference in rural areas...</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
+<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</div>
+<!-- Post Item 2 (Draft) -->
+<div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
+<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Hands planting a tree seedling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuE6MB6UIXkRRMBY-VxrQs6vYmIVfRiU8W3gVxv6LAZk5JUNIy4VfKSGE0qyW5zTjomI0DIuhkayMxsM-zmyYrwb1QQfllI9LUPe9u1TXisivoxWRAlVn-FFWMR6RmfzndiIz6ZFR8Si86kl58fcRDgnqq7ZDndsDtIjUQH0dsF-G9kIC9VRJmnqzsn14lhoe0fupPC6Q0R1z0YAi903Pz_MYLIiVswiw7QizYTPL3OZyrIoHRgxaxCIuuzPPNoXnczQBQOzdvViw");'></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300">Draft</span>
+<span class="text-xs text-text-secondary">Last edited 2 hours ago • Fundraising</span>
+</div>
+<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Annual Gala: Save the Date</h3>
+<p class="text-text-secondary text-sm mt-1 truncate">Details about our biggest fundraising event of the year need to be finalized.</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
+<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</div>
+<!-- Post Item 3 (Published) -->
+<div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
+<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Group of diverse volunteers smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAABK9jH4VCGyAaC8bfEefmXwiL-7MsXRYlC0X4P8Tr2AEP0GZt7OTRQ4U0hz1budePZlYPg20N_HounQQwkIWaYla7Dmp20x2oEQ4JNtFhlhn3IUiDidenyGIXLsg2FswZIqCY9lu_uxgxL4wq-JbhHqZvQEZ2XYTVzS9xzuDspLRWkJbvFDvKvFcD2QPuOjMKisfABjouOorFjFu1d788KLsHd0_9B_O1DtJ9b3VlCcq4EV1Ll3NsPOazJnOmKOgUcwRWvWZo6yg");'></div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">Published</span>
+<span class="text-xs text-text-secondary">Oct 20, 2023 • Volunteers</span>
+</div>
+<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Meet Our New Volunteer Coordinator</h3>
+<p class="text-text-secondary text-sm mt-1 truncate">Welcoming James to the team, he brings 10 years of experience...</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
+<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+</button>
+<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between mt-4">
+<span class="text-sm text-text-secondary">Showing 1-3 of 142 posts</span>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm disabled:opacity-50">Previous</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm">Next</button>
+</div>
+</div>
+</div>
+<!-- Right: Quick Editor / Draft Preview (Visible on larger screens) -->
+<div class="w-full lg:w-[480px] shrink-0">
+<div class="bg-surface-dark border border-[#2d3829] rounded-xl flex flex-col h-auto lg:min-h-[600px] sticky top-6">
+<!-- Editor Header -->
+<div class="p-4 border-b border-[#2d3829] flex items-center justify-between">
+<h2 class="text-white font-bold">Quick Draft</h2>
+<span class="text-xs text-text-secondary bg-surface-dark-lighter px-2 py-1 rounded">Unsaved Changes</span>
+</div>
+<!-- Content Inputs -->
+<div class="p-6 flex flex-col gap-5 flex-1">
+<!-- Featured Image Placeholder -->
+<div class="relative w-full aspect-video rounded-lg border-2 border-dashed border-[#42523d] bg-[#1e261c] flex flex-col items-center justify-center cursor-pointer hover:border-primary hover:bg-[#2d3829] transition-all group">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary mb-2">add_photo_alternate</span>
+<p class="text-xs text-text-secondary font-medium">Add Cover Image</p>
+</div>
+<!-- Title Input -->
+<div>
+<label class="block text-text-secondary text-xs font-bold uppercase tracking-wider mb-2">Title</label>
+<input class="w-full bg-transparent border-0 border-b border-[#2d3829] px-0 py-2 text-xl font-bold text-white placeholder-slate-600 focus:ring-0 focus:border-primary transition-colors" placeholder="Enter an inspiring title..." type="text"/>
+</div>
+<!-- Rich Text Toolbar (Mock) -->
+<div class="flex flex-col gap-2 flex-1">
+<label class="block text-text-secondary text-xs font-bold uppercase tracking-wider">Content</label>
+<div class="flex items-center gap-1 p-1 bg-[#1e261c] rounded-lg w-fit border border-[#2d3829] mb-2">
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<div class="w-px h-4 bg-[#2d3829] mx-1"></div>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10"><span class="material-symbols-outlined text-[18px]">link</span></button>
+<button class="p-1.5 text-text-secondary hover:text-white rounded hover:bg-white/10"><span class="material-symbols-outlined text-[18px]">image</span></button>
+</div>
+<textarea class="w-full flex-1 bg-transparent border-none resize-none px-0 text-text-secondary focus:ring-0 text-base leading-relaxed h-48 lg:h-auto" placeholder="Start writing your story here..."></textarea>
+</div>
+<!-- Meta Fields -->
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-[#2d3829]">
+<div>
+<label class="block text-text-secondary text-xs font-bold mb-1">Category</label>
+<select class="w-full bg-[#1e261c] border border-[#2d3829] rounded-md text-sm text-white py-1.5 px-2 focus:ring-1 focus:ring-primary focus:border-primary">
+<option>Select...</option>
+<option>Community</option>
+<option>News</option>
+</select>
+</div>
+<div>
+<label class="block text-text-secondary text-xs font-bold mb-1">Tags</label>
+<input class="w-full bg-[#1e261c] border border-[#2d3829] rounded-md text-sm text-white py-1.5 px-2 focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Add tags..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-4 border-t border-[#2d3829] bg-surface-dark-lighter/30 rounded-b-xl flex justify-between items-center">
+<button class="text-sm font-bold text-text-secondary hover:text-white px-3 py-2 rounded hover:bg-white/5 transition-colors">Save Draft</button>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/20 text-primary text-sm font-bold hover:bg-primary hover:text-background-dark transition-all">
+                                        Publish
+                                        <span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
