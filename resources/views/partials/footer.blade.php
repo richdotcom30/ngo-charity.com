@@ -4,10 +4,7 @@
 <!-- Brand -->
 <div class="flex flex-col gap-6">
 <div class="flex items-center gap-3">
-<div class="size-8 text-primary">
-<span class="material-symbols-outlined text-4xl">volunteer_activism</span>
-</div>
-<h2 class="text-xl font-bold">NGO Australia</h2>
+<img src="{{ asset('asset/images/logo-ngo.png') }}" alt="NGO Australia" class="h-8 w-auto">
 </div>
 <p class="text-gray-400 text-sm leading-relaxed">
                     Building a resilient, inclusive, and sustainable Australia for everyone. We are a registered charity dedicated to impactful change.

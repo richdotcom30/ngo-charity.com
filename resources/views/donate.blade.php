@@ -44,6 +44,9 @@
                             Secure Payment
                         </div>
 </div>
+
+<form id="donationForm" method="POST" action="{{ route('donation.submit') }}">
+@csrf
 <!-- Frequency Toggle -->
 <div class="mb-8 p-1.5 bg-surface-dark rounded-full inline-flex w-full sm:w-auto border border-border-green">
 <label class="cursor-pointer relative flex-1 sm:flex-none">
@@ -122,20 +125,21 @@
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="text-white text-lg font-bold">$</span>
 </div>
-<input class="block w-full rounded-2xl border border-border-green bg-surface-dark pl-10 pr-20 py-4 text-white placeholder-text-muted focus:border-primary focus:ring-1 focus:ring-primary text-lg font-medium transition-all group-hover:border-primary/50" id="custom-amount" placeholder="Enter custom amount" type="number"/>
+<input class="block w-full rounded-2xl border border-border-green bg-surface-dark pl-10 pr-20 py-4 text-white placeholder-text-muted focus:border-primary focus:ring-1 focus:ring-primary text-lg font-medium transition-all group-hover:border-primary/50" id="custom-amount" name="custom_amount" placeholder="Enter custom amount" type="number" min="1" max="100000"/>
 <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
 <span class="text-text-muted font-medium">AUD</span>
 </div>
 </div>
+<p class="text-xs text-text-muted mt-2">Or enter a custom amount above</p>
 </div>
 <!-- Personal Information -->
 <div class="mb-8 space-y-4">
 <h4 class="text-white font-bold text-lg">Your Details</h4>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="First Name" type="text"/>
-<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="Last Name" type="text"/>
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" name="first_name" placeholder="First Name" type="text" required/>
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" name="last_name" placeholder="Last Name" type="text" required/>
 </div>
-<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" placeholder="Email Address" type="email"/>
+<input class="w-full rounded-xl border border-border-green bg-surface-dark px-4 py-3 text-white placeholder-text-muted focus:border-primary focus:ring-primary focus:outline-none transition-colors" name="email" placeholder="Email Address" type="email" required/>
 </div>
 <!-- Submit Button -->
 <button class="w-full group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-primary px-8 py-5 text-background-dark font-black text-lg shadow-[0_4px_30px_rgba(76,223,32,0.2)] transition-all hover:bg-[#3ec01a] hover:shadow-[0_4px_40px_rgba(76,223,32,0.4)] hover:-translate-y-0.5 active:translate-y-0">
@@ -166,4 +170,36 @@
 </div>
 </section>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const amountRadios = document.querySelectorAll('input[name="amount"]');
+    const customAmountInput = document.getElementById('custom-amount');
+
+    // When custom amount is focused, uncheck all radio buttons
+    customAmountInput.addEventListener('focus', function() {
+        amountRadios.forEach(radio => {
+            radio.checked = false;
+        });
+    });
+
+    // When a radio button is selected, clear custom amount
+    amountRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                customAmountInput.value = '';
+            }
+        });
+    });
+
+    // When custom amount has a value, uncheck radio buttons
+    customAmountInput.addEventListener('input', function() {
+        if (this.value) {
+            amountRadios.forEach(radio => {
+                radio.checked = false;
+            });
+        }
+    });
+});
+</script>
 @endsection

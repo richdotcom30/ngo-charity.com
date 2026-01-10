@@ -130,7 +130,7 @@
 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Causes</h2>
 <p class="text-gray-400 text-lg">Your support goes directly to these critical programs.</p>
 </div>
-<a class="text-primary hover:text-white font-bold flex items-center gap-1 transition-colors" href="#">
+<a class="text-primary hover:text-white font-bold flex items-center gap-1 transition-colors" href="/programs">
                     View All Programs <span class="material-symbols-outlined">chevron_right</span>
 </a>
 </div>
@@ -138,7 +138,7 @@
 <!-- Card 1 -->
 <div class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 flex flex-col">
 <div class="h-56 overflow-hidden relative">
-<img alt="Education Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Children sitting in a classroom learning, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA0mrmOiSHCvLYAnSrq4ZpL59wBQAzJSTDkBU_dDW5MU3BwEoACgL8pOfM0L5nyTLcsn_JO5JciZMMCyIluvaPYAyhhAGn91ImiCr5TSXpXgazm3ijrcyaGn5gh0IXWGB5Vu2fepwj9VDdIMsFZjIA1ZDACLN4AOwdhuMsnP__Jr2VMJ4IvgSOsBJzgbwdty-UfdOjYwKubAnXpO32M8-SdVGI4kVazcGJ7hnKxBZHpMBQoinQOhRuod6H8lrJoACIvfh_pVDM-fc"/>
+<img alt="Education Support" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="{{ asset('asset/images/featured-causes/education.jpg') }}"/>
 <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                             Education
                         </div>
@@ -166,7 +166,7 @@
 <!-- Card 2 -->
 <div class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 flex flex-col">
 <div class="h-56 overflow-hidden relative">
-<img alt="Environmental Restoration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Volunteers planting saplings in a deforested area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPsENbRHuOPkKk6Yad_HDRehtScGRQ4W9XyZbMQEKxqNvZjhi1PdXdEr3Pmu3dogvZgZ-_lfqeUzOqOoEDDBADU8F9ZFhUs96tCaVxAwAEjMfOndoDpIJF10Iv5Tuc8O56h3OTnQjJVIAuFtBmGiFvOhrhAy4LJZCg3jHeEFtw6cEnUNuZbPLRvn-7zU-I0XCL6ogYVboc99lzlAFC6DdHj4brnFhkBhDT0yjQChYEupXJ-Y_fxCJtdgRCIw"/>
+<img alt="Bushfire Recovery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="{{ asset('asset/images/featured-causes/bush-fire-recovery.jpg') }}"/>
 <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                             Environment
                         </div>
@@ -192,7 +192,7 @@
 <!-- Card 3 -->
 <div class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 flex flex-col">
 <div class="h-56 overflow-hidden relative">
-<img alt="Community Housing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A smiling volunteer handing a box of food to an elderly person" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsrKpqsENEsdC79uHCv8ZFB21Esh89D2hkXGmh6XPHj-hTlwBTSFlA1ph_bBMv4QRqUsU3Ejed2DS5zV7wPcok_KnSlovwRu0oNXSiGMpe3L2t4GQ_5raubMwuECIzi68D9QPwoyGQ1A1zn7eFesq3_5i7ltg3NQILb8smlbnG2nVHuMarK_GiuWI14GdshvXUyYdBjKFFKDf0LG-q1-H2-AkA5ApNq9nOopD2ZriHjmvOZXW1X7SgQUOBSxiZKNifGhyWhZuDitA"/>
+<img alt="Food Security Network" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="{{ asset('asset/images/featured-causes/food-security-network.png') }}"/>
 <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                             Community
                         </div>
@@ -322,6 +322,82 @@
 </div>
 </div>
 </section>
+<!-- Blog Section -->
+<section class="py-24 bg-[#152111]">
+<div class="max-w-[1100px] mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Latest Stories & Updates</h2>
+<p class="text-gray-400 text-lg">Stay informed about our impact and community initiatives.</p>
+</div>
+<a href="{{ route('blog') }}" class="text-primary hover:text-white font-bold flex items-center gap-1 transition-colors">
+                    View More Stories <span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Blog Preview 1 -->
+<article class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+<div class="h-48 overflow-hidden relative">
+<img alt="Community Garden Project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCDpRAFDSkA9IQsl9FazExhDTH3Yy7Zbp-VYBrm4az7edbp8gE32vLM0QDvCwtOl8qJ86BgyYdbdq56PmVvMtY-ET5czLpwDS8q-S2xKXsLL46w9jXNr3vX9aTMhWE01gLChu3HEE5GfYdsY3GAreosim0Hwsr1_EIPv7iWi_Vu7QshuuAuTgJwhC0qISAstWDIsup17D7gyEgWo2DVPCtcnP86AoGaC3taZB7vxramksQQdTq6z-2JkF4MR5IUpQVV6lUI6KUfgE"/>
+<div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Community
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 text-accent-brown text-sm font-bold mb-3">
+<span>December 15, 2024</span>
+<span class="w-1 h-1 bg-accent-brown rounded-full"></span>
+<span>5 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Community Garden Project Transforms Urban Food Access</h3>
+<p class="text-gray-400 text-sm mb-4">How our community garden initiative in inner-city Sydney is providing fresh produce to over 200 families weekly.</p>
+<a href="{{ route('blog') }}" class="text-primary hover:text-white font-bold text-sm transition-colors">Read More →</a>
+</div>
+</article>
+
+<!-- Blog Preview 2 -->
+<article class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+<div class="h-48 overflow-hidden relative">
+<img alt="Indigenous Youth Program" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA0mrmOiSHCvLYAnSrq4ZpL59wBQAzJSTDkBU_dDW5MU3BwEoACgL8pOfM0L5nyTLcsn_JO5JciZMMCyIluvaPYAyhhAGn91ImiCr5TSXpXgazm3ijrcyaGn5gh0IXWGB5Vu2fepwj9VDdIMsFZjIA1ZDACLN4AOwdhuMsnP__Jr2VMJ4IvgSOsBJzgbwdty-UfdOjYwKubAnXpO32M8-SdVGI4kVazcGJ7hnKxBZHpMBQoinQOhRuod6H8lrJoACIvfh_pVDM-fc"/>
+<div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Education
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 text-accent-brown text-sm font-bold mb-3">
+<span>December 10, 2024</span>
+<span class="w-1 h-1 bg-accent-brown rounded-full"></span>
+<span>7 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">Empowering Indigenous Youth Through Digital Skills</h3>
+<p class="text-gray-400 text-sm mb-4">Our groundbreaking program teaching coding and digital literacy to Indigenous youth in remote communities.</p>
+<a href="{{ route('blog') }}" class="text-primary hover:text-white font-bold text-sm transition-colors">Read More →</a>
+</div>
+</article>
+
+<!-- Blog Preview 3 -->
+<article class="group bg-surface-dark rounded-[2rem] overflow-hidden border border-[#2d4625] hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+<div class="h-48 overflow-hidden relative">
+<img alt="Bushfire Recovery" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="{{ asset('asset/images/featured-causes/bush-fire-recovery.jpg') }}"/>
+<div class="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Environment
+                        </div>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 text-accent-brown text-sm font-bold mb-3">
+<span>December 5, 2024</span>
+<span class="w-1 h-1 bg-accent-brown rounded-full"></span>
+<span>6 min read</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">One Year After the Fires: Hope Blooms in Replanted Forests</h3>
+<p class="text-gray-400 text-sm mb-4">Celebrating the remarkable recovery of bushfire-affected regions as native vegetation returns.</p>
+<a href="{{ route('blog') }}" class="text-primary hover:text-white font-bold text-sm transition-colors">Read More →</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+
 <!-- Partners Section -->
 <section class="py-12 bg-[#111a0e] border-t border-[#2d4625]">
 <div class="max-w-[1100px] mx-auto px-6">
