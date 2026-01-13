@@ -19,27 +19,27 @@
 </div>
 </div>
 <nav class="flex-1 overflow-y-auto px-4 pb-4 space-y-1">
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/dashboard">
-<span class="material-symbols-outlined">grid_view</span>
-<span class="text-sm font-medium">Dashboard</span>
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.dashboard') }}">
+<span class="material-symbols-outlined filled">grid_view</span>
+<span class="text-sm font-bold">Dashboard</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="/admin/donations">
-<span class="material-symbols-outlined fill-1">attach_money</span>
-<span class="text-sm font-bold">Donations</span>
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="{{ route('admin.donations') }}">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="text-sm font-medium">Donations</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.volunteers') }}">
 <span class="material-symbols-outlined">diversity_3</span>
 <span class="text-sm font-medium">Volunteers</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.programs') }}">
 <span class="material-symbols-outlined">calendar_month</span>
 <span class="text-sm font-medium">Programs</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.blog') }}">
 <span class="material-symbols-outlined">article</span>
 <span class="text-sm font-medium">Blog</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.analytics') }}">
 <span class="material-symbols-outlined">analytics</span>
 <span class="text-sm font-medium">Analytics</span>
 </a>
@@ -58,7 +58,7 @@
 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-[#1a140e]"></div>
 </div>
 <div class="flex flex-col overflow-hidden">
-<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-sm font-bold truncate">NGO Admin</p>
 <p class="text-text-muted-light dark:text-text-muted-dark text-xs truncate">sarah@ausrelief.org</p>
 </div>
 </div>
@@ -107,10 +107,10 @@
 <span class="material-symbols-outlined text-[20px]">file_upload</span>
                             Import
                         </button>
-<button class="flex items-center justify-center gap-2 px-4 py-2 bg-primary text-[#152112] text-sm font-bold rounded-lg hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(76,223,32,0.3)]">
+<a href="{{ route('admin.donations.export') }}" class="flex items-center justify-center gap-2 px-4 py-2 bg-primary text-[#152112] text-sm font-bold rounded-lg hover:bg-primary/90 transition-all shadow-[0_0_15px_rgba(76,223,32,0.3)]">
 <span class="material-symbols-outlined text-[20px]">download</span>
                             Export Report
-                        </button>
+                        </a>
 </div>
 </div>
 <!-- Stats Cards -->
@@ -235,10 +235,24 @@
                                             Completed
                                         </div>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-right relative">
+<div class="relative inline-block">
+<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors action-dropdown-btn" data-donation-id="1">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
+<div class="action-dropdown-menu hidden absolute right-0 top-full mt-1 w-32 bg-surface-highlight border border-surface-highlight rounded-lg shadow-xl z-50">
+<div class="py-1">
+<button class="view-donation-btn w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 flex items-center gap-2 transition-colors" data-donation-id="1">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View</span>
+</button>
+<button class="close-dropdown-btn w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-white/10 hover:text-white flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Close</span>
+</button>
+</div>
+</div>
+</div>
 </td>
 </tr>
 <!-- Row 2 -->
@@ -271,10 +285,24 @@
                                             Pending
                                         </div>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-right relative">
+<div class="relative inline-block">
+<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors action-dropdown-btn" data-donation-id="2">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
+<div class="action-dropdown-menu hidden absolute right-0 top-full mt-1 w-32 bg-surface-highlight border border-surface-highlight rounded-lg shadow-xl z-50">
+<div class="py-1">
+<button class="view-donation-btn w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 flex items-center gap-2 transition-colors" data-donation-id="2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View</span>
+</button>
+<button class="close-dropdown-btn w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-white/10 hover:text-white flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Close</span>
+</button>
+</div>
+</div>
+</div>
 </td>
 </tr>
 <!-- Row 3 -->
@@ -309,10 +337,24 @@
                                             Failed
                                         </div>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-right relative">
+<div class="relative inline-block">
+<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors action-dropdown-btn" data-donation-id="3">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
+<div class="action-dropdown-menu hidden absolute right-0 top-full mt-1 w-32 bg-surface-highlight border border-surface-highlight rounded-lg shadow-xl z-50">
+<div class="py-1">
+<button class="view-donation-btn w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 flex items-center gap-2 transition-colors" data-donation-id="3">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View</span>
+</button>
+<button class="close-dropdown-btn w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-white/10 hover:text-white flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Close</span>
+</button>
+</div>
+</div>
+</div>
 </td>
 </tr>
 <!-- Row 4 -->
@@ -345,10 +387,24 @@
                                             Completed
                                         </div>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-right relative">
+<div class="relative inline-block">
+<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors action-dropdown-btn" data-donation-id="4">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
+<div class="action-dropdown-menu hidden absolute right-0 top-full mt-1 w-32 bg-surface-highlight border border-surface-highlight rounded-lg shadow-xl z-50">
+<div class="py-1">
+<button class="view-donation-btn w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 flex items-center gap-2 transition-colors" data-donation-id="4">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View</span>
+</button>
+<button class="close-dropdown-btn w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-white/10 hover:text-white flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Close</span>
+</button>
+</div>
+</div>
+</div>
 </td>
 </tr>
 <!-- Row 5 -->
@@ -381,10 +437,24 @@
                                             Completed
                                         </div>
 </td>
-<td class="px-6 py-4 whitespace-nowrap text-right">
-<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors">
+<td class="px-6 py-4 whitespace-nowrap text-right relative">
+<div class="relative inline-block">
+<button class="text-text-secondary hover:text-white p-1 rounded hover:bg-white/10 transition-colors action-dropdown-btn" data-donation-id="5">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
+<div class="action-dropdown-menu hidden absolute right-0 top-full mt-1 w-32 bg-surface-highlight border border-surface-highlight rounded-lg shadow-xl z-50">
+<div class="py-1">
+<button class="view-donation-btn w-full text-left px-3 py-2 text-sm text-white hover:bg-white/10 flex items-center gap-2 transition-colors" data-donation-id="5">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View</span>
+</button>
+<button class="close-dropdown-btn w-full text-left px-3 py-2 text-sm text-text-secondary hover:bg-white/10 hover:text-white flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+<span>Close</span>
+</button>
+</div>
+</div>
+</div>
 </td>
 </tr>
 </tbody>
@@ -423,5 +493,328 @@
 </div>
 </div>
 </main>
+
+<!-- Donation Detail Modal -->
+<div id="donationModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
+<div class="flex items-center justify-center min-h-screen p-4">
+<div class="bg-surface-dark border border-surface-highlight rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+<!-- Modal Header -->
+<div class="flex items-center justify-between p-6 border-b border-surface-highlight">
+<h2 class="text-xl font-bold text-white flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+Donation Details
+</h2>
+<button id="closeModalBtn" class="text-text-secondary hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+
+<!-- Modal Content -->
+<div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+<div id="donationDetailContent">
+<!-- Content will be loaded here -->
+<div class="flex items-center justify-center py-12">
+<div class="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent"></div>
+<span class="ml-3 text-text-secondary">Loading donation details...</span>
+</div>
+</div>
+</div>
+
+<!-- Modal Footer -->
+<div class="flex items-center justify-end gap-3 p-6 border-t border-surface-highlight bg-surface-highlight/20">
+<button id="closeModalFooterBtn" class="px-4 py-2 text-text-secondary hover:text-white hover:bg-white/10 rounded-lg transition-colors">
+Close
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- JavaScript for Dropdown and Modal -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle dropdown toggle
+    document.querySelectorAll('.action-dropdown-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            const donationId = this.getAttribute('data-donation-id');
+            const dropdown = this.nextElementSibling;
+
+            // Close all other dropdowns
+            document.querySelectorAll('.action-dropdown-menu').forEach(menu => {
+                if (menu !== dropdown) {
+                    menu.classList.add('hidden');
+                }
+            });
+
+            // Toggle current dropdown
+            dropdown.classList.toggle('hidden');
+        });
+    });
+
+    // Close dropdown when clicking close button
+    document.querySelectorAll('.close-dropdown-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const dropdown = this.closest('.action-dropdown-menu');
+            dropdown.classList.add('hidden');
+        });
+    });
+
+    // Handle view donation button
+    document.querySelectorAll('.view-donation-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const donationId = this.getAttribute('data-donation-id');
+
+            // Close dropdown
+            const dropdown = this.closest('.action-dropdown-menu');
+            dropdown.classList.add('hidden');
+
+            // Show modal
+            showDonationModal(donationId);
+        });
+    });
+
+    // Close modal when clicking outside or close buttons
+    document.getElementById('donationModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            hideDonationModal();
+        }
+    });
+
+    document.getElementById('closeModalBtn').addEventListener('click', hideDonationModal);
+    document.getElementById('closeModalFooterBtn').addEventListener('click', hideDonationModal);
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function() {
+        document.querySelectorAll('.action-dropdown-menu').forEach(menu => {
+            menu.classList.add('hidden');
+        });
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    document.querySelectorAll('.action-dropdown-menu').forEach(menu => {
+        menu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+
+function showDonationModal(donationId) {
+    const modal = document.getElementById('donationModal');
+    const content = document.getElementById('donationDetailContent');
+
+    // Show modal
+    modal.classList.remove('hidden');
+
+    // Load donation details (mock data for demo)
+    loadDonationDetails(donationId);
+}
+
+function hideDonationModal() {
+    const modal = document.getElementById('donationModal');
+    modal.classList.add('hidden');
+}
+
+function loadDonationDetails(donationId) {
+    const content = document.getElementById('donationDetailContent');
+
+    // Mock donation data based on donation ID
+    const mockDonations = {
+        1: {
+            donor: { name: 'Sarah Jenkins', email: 'sarah.j@example.com', phone: '+61 400 123 456' },
+            amount: 50.00,
+            currency: 'AUD',
+            type: 'One-time',
+            paymentMethod: 'Stripe',
+            paymentDetails: 'Visa ending in 4242',
+            transactionId: 'txn_1N8X9B2eZvKYlo2C8X9B2eZv',
+            status: 'Completed',
+            date: 'October 24, 2023',
+            time: '2:30 PM UTC'
+        },
+        2: {
+            donor: { name: 'Michael Chen', email: 'm.chen@tech.co', phone: '+61 401 234 567' },
+            amount: 120.00,
+            currency: 'AUD',
+            type: 'Monthly',
+            paymentMethod: 'PayPal',
+            paymentDetails: 'PayPal account',
+            transactionId: 'PAY-8X9B2eZvKYlo2C8X9B2eZv',
+            status: 'Pending',
+            date: 'October 23, 2023',
+            time: '4:15 PM UTC'
+        },
+        3: {
+            donor: { name: 'Emma Larson', email: 'emma.l@domain.net', phone: '+61 402 345 678' },
+            amount: 25.00,
+            currency: 'AUD',
+            type: 'One-time',
+            paymentMethod: 'Stripe',
+            paymentDetails: 'Mastercard ending in 8812',
+            transactionId: 'txn_2N8X9B2eZvKYlo2C8X9B2eZv',
+            status: 'Failed',
+            date: 'October 23, 2023',
+            time: '1:45 PM UTC'
+        },
+        4: {
+            donor: { name: 'David Kim', email: 'david.kim@studio.io', phone: '+61 403 456 789' },
+            amount: 500.00,
+            currency: 'AUD',
+            type: 'Monthly',
+            paymentMethod: 'Stripe',
+            paymentDetails: 'Amex ending in 1002',
+            transactionId: 'txn_3N8X9B2eZvKYlo2C8X9B2eZv',
+            status: 'Completed',
+            date: 'October 22, 2023',
+            time: '3:20 PM UTC'
+        },
+        5: {
+            donor: { name: 'Sophia Martinez', email: 'sophia.m@global.org', phone: '+61 404 567 890' },
+            amount: 75.00,
+            currency: 'AUD',
+            type: 'One-time',
+            paymentMethod: 'Stripe',
+            paymentDetails: 'Visa ending in 9921',
+            transactionId: 'txn_4N8X9B2eZvKYlo2C8X9B2eZv',
+            status: 'Completed',
+            date: 'October 22, 2023',
+            time: '5:10 PM UTC'
+        }
+    };
+
+    const donation = mockDonations[donationId];
+
+    if (donation) {
+        content.innerHTML = `
+            <div class="space-y-6">
+                <!-- Donor Information -->
+                <div class="bg-surface-highlight/30 rounded-xl p-6 border border-surface-highlight">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">person</span>
+                        Donor Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-text-secondary">Full Name</p>
+                            <p class="text-white font-medium">${donation.donor.name}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Email Address</p>
+                            <p class="text-white font-medium">${donation.donor.email}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Phone Number</p>
+                            <p class="text-white font-medium">${donation.donor.phone}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Donation Type</p>
+                            <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-blue-500/10 text-blue-400">
+                                ${donation.type}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Information -->
+                <div class="bg-surface-highlight/30 rounded-xl p-6 border border-surface-highlight">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">payments</span>
+                        Payment Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-text-secondary">Amount</p>
+                            <p class="text-2xl font-bold text-primary">A$${donation.amount.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Payment Method</p>
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">${donation.paymentMethod === 'Stripe' ? 'credit_card' : 'account_balance'}</span>
+                                <span class="text-white font-medium">${donation.paymentMethod}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Payment Details</p>
+                            <p class="text-white font-medium">${donation.paymentDetails}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Status</p>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${donation.status === 'Completed' ? 'bg-primary/20 text-primary border border-primary/20' : donation.status === 'Pending' ? 'bg-yellow-500/20 text-yellow-500 border border-yellow-500/20' : 'bg-red-500/20 text-red-400 border border-red-500/20'}">
+                                <span class="size-1.5 rounded-full ${donation.status === 'Completed' ? 'bg-primary' : donation.status === 'Pending' ? 'bg-yellow-500 animate-pulse' : 'bg-red-400'}"></span>
+                                ${donation.status}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transaction Details -->
+                <div class="bg-surface-highlight/30 rounded-xl p-6 border border-surface-highlight">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">receipt</span>
+                        Transaction Details
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-text-secondary">Transaction ID</p>
+                            <p class="text-white font-mono text-sm font-medium">${donation.transactionId}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Date & Time</p>
+                            <p class="text-white font-medium">${donation.date} at ${donation.time}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Currency</p>
+                            <p class="text-white font-medium">${donation.currency}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-text-secondary">Processing Fee</p>
+                            <p class="text-white font-medium">A$${(donation.amount * 0.029 + 0.30).toFixed(2)}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="bg-surface-highlight/30 rounded-xl p-6 border border-surface-highlight">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">info</span>
+                        Additional Information
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between py-2 border-b border-surface-highlight">
+                            <span class="text-text-secondary">Tax Deductible</span>
+                            <span class="text-green-400 font-medium">Yes</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2 border-b border-surface-highlight">
+                            <span class="text-text-secondary">Receipt Sent</span>
+                            <span class="text-green-400 font-medium">Yes</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2 border-b border-surface-highlight">
+                            <span class="text-text-secondary">Email Confirmation</span>
+                            <span class="text-green-400 font-medium">Yes</span>
+                        </div>
+                        <div class="flex items-center justify-between py-2">
+                            <span class="text-text-secondary">Admin Notification</span>
+                            <span class="text-green-400 font-medium">Yes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        content.innerHTML = `
+            <div class="flex items-center justify-center py-12">
+                <div class="text-center">
+                    <span class="material-symbols-outlined text-6xl text-red-400 mb-4">error</span>
+                    <h3 class="text-xl font-bold text-white mb-2">Donation Not Found</h3>
+                    <p class="text-text-secondary">Unable to load donation details. Please try again.</p>
+                </div>
+            </div>
+        `;
+    }
+}
+</script>
 </div>
 @endsection

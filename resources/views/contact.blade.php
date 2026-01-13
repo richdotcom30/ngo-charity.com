@@ -35,18 +35,18 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Name -->
 <div class="space-y-2">
-<label class="block text-sm font-medium text-text-secondary ml-4" for="name">Your Name</label>
+<label class="block text-sm font-medium text-white ml-4" for="name">Your Name</label>
 <input class="w-full bg-[#111c0e] border border-[#2d4625] focus:border-primary focus:ring-1 focus:ring-primary rounded-full px-6 py-3.5 text-white placeholder-gray-500 outline-none transition-all duration-200" id="name" placeholder="Jane Doe" type="text"/>
 </div>
 <!-- Email -->
 <div class="space-y-2">
-<label class="block text-sm font-medium text-text-secondary ml-4" for="email">Email Address</label>
+<label class="block text-sm font-medium text-white ml-4" for="email">Email Address</label>
 <input class="w-full bg-[#111c0e] border border-[#2d4625] focus:border-primary focus:ring-1 focus:ring-primary rounded-full px-6 py-3.5 text-white placeholder-gray-500 outline-none transition-all duration-200" id="email" placeholder="jane@example.com" type="email"/>
 </div>
 </div>
 <!-- Subject Dropdown -->
 <div class="space-y-2">
-<label class="block text-sm font-medium text-text-secondary ml-4" for="subject">Subject</label>
+<label class="block text-sm font-medium text-white ml-4" for="subject">Subject</label>
 <div class="relative">
 <select class="w-full bg-[#111c0e] border border-[#2d4625] focus:border-primary focus:ring-1 focus:ring-primary rounded-full px-6 py-3.5 text-white appearance-none outline-none transition-all duration-200 cursor-pointer" id="subject">
 <option disabled="" selected="" value="">Select a topic (e.g., Volunteering, Donation)</option>
@@ -62,7 +62,7 @@
 </div>
 <!-- Message -->
 <div class="space-y-2">
-<label class="block text-sm font-medium text-text-secondary ml-4" for="message">Message</label>
+<label class="block text-sm font-medium text-white ml-4" for="message">Message</label>
 <textarea class="w-full bg-[#111c0e] border border-[#2d4625] focus:border-primary focus:ring-1 focus:ring-primary rounded-[2rem] px-6 py-4 text-white placeholder-gray-500 outline-none resize-none transition-all duration-200" id="message" placeholder="How can we help you make an impact?" rows="5"></textarea>
 </div>
 <!-- Submit Button -->
@@ -119,7 +119,7 @@
 </div>
 <!-- Social Media Links -->
 <div class="mt-10 pt-8 border-t border-[#2d4625]">
-<h4 class="text-sm font-bold text-text-secondary uppercase tracking-wider mb-4">Follow our journey</h4>
+<h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Follow our journey</h4>
 <div class="flex gap-4">
 <a class="w-10 h-10 rounded-full border border-[#2d4625] flex items-center justify-center text-gray-400 hover:bg-primary hover:text-[#152112] hover:border-primary transition-all duration-300" href="#">
 <svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>

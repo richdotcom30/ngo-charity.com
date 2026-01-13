@@ -113,10 +113,10 @@
                         We believe in a hands-on approach, working directly with local leaders to identify needs and implement sustainable solutions that last for generations.
                     </p>
 <div class="pt-4">
-<button class="inline-flex h-12 px-8 bg-[#2d4625] hover:bg-surface-dark text-white text-base font-bold rounded-full items-center justify-center transition-all duration-300 border border-[#3e5e34] hover:border-primary gap-2 group">
+<a href="{{ route('about') }}" class="inline-flex h-12 px-8 bg-[#2d4625] hover:bg-surface-dark text-white text-base font-bold rounded-full items-center justify-center transition-all duration-300 border border-[#3e5e34] hover:border-primary gap-2 group">
                             Read Our Story
                             <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
-</button>
+</a>
 </div>
 </div>
 </div>
@@ -158,9 +158,9 @@
 </div>
 </div>
 </div>
-<button class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300">
+<a href="{{ route('donate') }}" class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300 inline-block text-center">
                             Support This Cause
-                        </button>
+                        </a>
 </div>
 </div>
 <!-- Card 2 -->
@@ -184,9 +184,9 @@
 <div class="bg-primary h-2 rounded-full w-[90%]"></div>
 </div>
 </div>
-<button class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300">
+<a href="{{ route('donate') }}" class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300 inline-block text-center">
                             Support This Cause
-                        </button>
+                        </a>
 </div>
 </div>
 <!-- Card 3 -->
@@ -210,9 +210,9 @@
 <div class="bg-primary h-2 rounded-full w-[54%]"></div>
 </div>
 </div>
-<button class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300">
+<a href="{{ route('donate') }}" class="w-full py-3 rounded-xl bg-[#2d4625] text-white font-bold text-sm hover:bg-primary hover:text-[#152112] transition-colors duration-300 inline-block text-center">
                             Support This Cause
-                        </button>
+                        </a>
 </div>
 </div>
 </div>

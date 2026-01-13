@@ -19,35 +19,31 @@
 </div>
 </div>
 <nav class="flex-1 overflow-y-auto px-4 pb-4 space-y-1">
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/dashboard">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.dashboard') }}">
 <span class="material-symbols-outlined filled">grid_view</span>
 <span class="text-sm font-bold">Dashboard</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/volunteers">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.volunteers') }}">
 <span class="material-symbols-outlined">diversity_3</span>
 <span class="text-sm font-medium">Volunteers</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/programs">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.programs') }}">
 <span class="material-symbols-outlined">calendar_month</span>
 <span class="text-sm font-medium">Programs</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="/admin/blog">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="{{ route('admin.blog') }}">
 <span class="material-symbols-outlined">article</span>
 <span class="text-sm font-medium">Blog</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/donations">
-<span class="material-symbols-outlined">volunteer_activism</span>
-<span class="text-sm font-medium">Donations</span>
-</a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#analytics">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.analytics') }}">
 <span class="material-symbols-outlined">analytics</span>
 <span class="text-sm font-medium">Analytics</span>
 </a>
 <div class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
 <p class="px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-2">System</p>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#settings">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.contact-inquiries') }}">
 <span class="material-symbols-outlined">settings</span>
-<span class="text-sm font-medium">Settings</span>
+<span class="text-sm font-medium">Contact Inquiries</span>
 </a>
 </div>
 </nav>
@@ -58,7 +54,7 @@
 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-[#1a140e]"></div>
 </div>
 <div class="flex flex-col overflow-hidden">
-<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-sm font-bold truncate">NGO Admin</p>
 <p class="text-text-muted-light dark:text-text-muted-dark text-xs truncate">sarah@ausrelief.org</p>
 </div>
 </div>
@@ -138,27 +134,28 @@
 </div>
 <p class="text-text-secondary text-sm font-medium">Total Posts</p>
 <div class="flex items-end gap-3">
-<p class="text-white text-3xl font-bold">142</p>
-<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">+12%</span>
+<p class="text-white text-3xl font-bold">{{ $posts->total() }}</p>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">Active</span>
 </div>
 </div>
 <div class="flex flex-col gap-1 p-5 rounded-xl border border-[#2d3829] bg-surface-dark relative overflow-hidden group">
 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
 <span class="material-symbols-outlined text-blue-400" style="font-size: 64px;">visibility</span>
 </div>
-<p class="text-text-secondary text-sm font-medium">Total Views (This Month)</p>
+<p class="text-text-secondary text-sm font-medium">Total Views (All Time)</p>
 <div class="flex items-end gap-3">
-<p class="text-white text-3xl font-bold">8.4k</p>
-<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">+5%</span>
+<p class="text-white text-3xl font-bold">{{ number_format(\App\Models\BlogPost::sum('views')) }}</p>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-md mb-1">Total</span>
 </div>
 </div>
 <div class="flex flex-col gap-1 p-5 rounded-xl border border-[#2d3829] bg-surface-dark relative overflow-hidden group">
 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
 <span class="material-symbols-outlined text-orange-400" style="font-size: 64px;">edit_document</span>
 </div>
-<p class="text-text-secondary text-sm font-medium">Pending Drafts</p>
+<p class="text-text-secondary text-sm font-medium">Draft Posts</p>
 <div class="flex items-end gap-3">
-<p class="text-white text-3xl font-bold">5</p>
+<p class="text-white text-3xl font-bold">{{ \App\Models\BlogPost::where('status', 'draft')->count() }}</p>
+<span class="text-yellow-400 text-sm font-bold bg-yellow-400/10 px-2 py-0.5 rounded-md mb-1">Pending</span>
 </div>
 </div>
 </div>
@@ -187,75 +184,76 @@
 </div>
 <!-- Posts List -->
 <div class="flex flex-col gap-3">
-<!-- Post Item 1 (Published) -->
+@if($posts->count() > 0)
+@foreach($posts as $post)
 <div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
-<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Children playing in a community center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBriSoZN-tmpSj6nmgPd8j3q19zsfDdUeTq38FYDLnl0dSc9wYvh6gSQuuDwLUnyaI4-kulV8Xg0Tb5rkdzpTHxVZNPi-6x-mM6oXJbnw19qnVRqnforRryB4qiNmxoD9DzoXJyKKJLQiTW0xHJzlUlAx45B7Feq7cRKMb74lJKbgnq8dpMrw2tux5YdfmUt6Qgg4hGWhry7dbofaxBv4-jmmyEZBo-jQ2TQtYhR3yAUUIYMyaJR0ENgH7xyCzaX4KEWuy_4ZPxOgA");'></div>
+<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" style="background-image: url('{{ $post->featured_image_url ?? asset('images/placeholder-blog.jpg') }}');"></div>
 <div class="flex-1 min-w-0">
 <div class="flex items-center gap-2 mb-1">
+@if($post->status === 'published')
 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">Published</span>
-<span class="text-xs text-text-secondary">Oct 24, 2023 • Community</span>
-</div>
-<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Rebuilding Hope: The Queensland Project</h3>
-<p class="text-text-secondary text-sm mt-1 truncate">An update on how our volunteers are making a difference in rural areas...</p>
-</div>
-<div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
-<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
-<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
-</button>
-<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
-<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
-</button>
-</div>
-</div>
-<!-- Post Item 2 (Draft) -->
-<div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
-<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Hands planting a tree seedling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDuE6MB6UIXkRRMBY-VxrQs6vYmIVfRiU8W3gVxv6LAZk5JUNIy4VfKSGE0qyW5zTjomI0DIuhkayMxsM-zmyYrwb1QQfllI9LUPe9u1TXisivoxWRAlVn-FFWMR6RmfzndiIz6ZFR8Si86kl58fcRDgnqq7ZDndsDtIjUQH0dsF-G9kIC9VRJmnqzsn14lhoe0fupPC6Q0R1z0YAi903Pz_MYLIiVswiw7QizYTPL3OZyrIoHRgxaxCIuuzPPNoXnczQBQOzdvViw");'></div>
-<div class="flex-1 min-w-0">
-<div class="flex items-center gap-2 mb-1">
+@elseif($post->status === 'draft')
 <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300">Draft</span>
-<span class="text-xs text-text-secondary">Last edited 2 hours ago • Fundraising</span>
+@elseif($post->status === 'archived')
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-gray-700 text-gray-300">Archived</span>
+@endif
+<span class="text-xs text-text-secondary">{{ $post->created_at->format('M d, Y') }} • {{ ucfirst($post->category) }}</span>
+@if($post->views > 0)
+<span class="text-xs text-text-secondary"> • {{ number_format($post->views) }} views</span>
+@endif
 </div>
-<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Annual Gala: Save the Date</h3>
-<p class="text-text-secondary text-sm mt-1 truncate">Details about our biggest fundraising event of the year need to be finalized.</p>
-</div>
-<div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
-<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
-<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
-</button>
-<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
-<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
-</button>
-</div>
-</div>
-<!-- Post Item 3 (Published) -->
-<div class="group flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl bg-surface-dark border border-[#2d3829] hover:border-[#42523d] transition-all">
-<div class="h-16 w-16 sm:h-20 sm:w-20 shrink-0 rounded-lg bg-slate-700 bg-cover bg-center" data-alt="Group of diverse volunteers smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAABK9jH4VCGyAaC8bfEefmXwiL-7MsXRYlC0X4P8Tr2AEP0GZt7OTRQ4U0hz1budePZlYPg20N_HounQQwkIWaYla7Dmp20x2oEQ4JNtFhlhn3IUiDidenyGIXLsg2FswZIqCY9lu_uxgxL4wq-JbhHqZvQEZ2XYTVzS9xzuDspLRWkJbvFDvKvFcD2QPuOjMKisfABjouOorFjFu1d788KLsHd0_9B_O1DtJ9b3VlCcq4EV1Ll3NsPOazJnOmKOgUcwRWvWZo6yg");'></div>
-<div class="flex-1 min-w-0">
-<div class="flex items-center gap-2 mb-1">
-<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary">Published</span>
-<span class="text-xs text-text-secondary">Oct 20, 2023 • Volunteers</span>
-</div>
-<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">Meet Our New Volunteer Coordinator</h3>
-<p class="text-text-secondary text-sm mt-1 truncate">Welcoming James to the team, he brings 10 years of experience...</p>
+<h3 class="text-white font-bold text-lg leading-tight truncate group-hover:text-primary transition-colors cursor-pointer">{{ $post->title }}</h3>
+<p class="text-text-secondary text-sm mt-1 truncate">{{ Str::limit(strip_tags($post->excerpt ?? $post->content), 80) }}</p>
 </div>
 <div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
-<button class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
+<a href="{{ route('admin.blog') }}/{{ $post->id }}/edit" class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
 <span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
-</button>
-<button class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
+</a>
+<form method="POST" action="{{ route('admin.blog.destroy', $post) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this blog post?')">
+@csrf
+@method('DELETE')
+<button type="submit" class="p-2 rounded-lg text-text-secondary hover:text-red-400 hover:bg-red-500/10 transition-colors" title="Delete">
 <span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
 </button>
+</form>
 </div>
 </div>
+@endforeach
+@else
+<div class="text-center py-12">
+<div class="text-text-secondary mb-4">
+<span class="material-symbols-outlined text-6xl">article</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2">No blog posts yet</h3>
+<p class="text-text-secondary mb-6">Create your first blog post to share stories and updates with the community.</p>
+<a href="{{ route('admin.blog.create') }}" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-[#152112] text-sm font-bold rounded-lg hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined">add</span>
+Create First Post
+</a>
+</div>
+@endif
 </div>
 <!-- Pagination -->
+@if($posts->hasPages())
 <div class="flex items-center justify-between mt-4">
-<span class="text-sm text-text-secondary">Showing 1-3 of 142 posts</span>
+<span class="text-sm text-text-secondary">
+    Showing {{ $posts->firstItem() }}-{{ $posts->lastItem() }} of {{ $posts->total() }} posts
+</span>
 <div class="flex gap-2">
-<button class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm disabled:opacity-50">Previous</button>
-<button class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm">Next</button>
+    @if($posts->onFirstPage())
+        <span class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary/50 text-sm cursor-not-allowed">Previous</span>
+    @else
+        <a href="{{ $posts->previousPageUrl() }}" class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm transition-colors">Previous</a>
+    @endif
+
+    @if($posts->hasMorePages())
+        <a href="{{ $posts->nextPageUrl() }}" class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary hover:text-white hover:border-white/20 text-sm transition-colors">Next</a>
+    @else
+        <span class="px-3 py-1.5 rounded-lg border border-[#2d3829] text-text-secondary/50 text-sm cursor-not-allowed">Next</span>
+    @endif
 </div>
 </div>
+@endif
 </div>
 <!-- Right: Quick Editor / Draft Preview (Visible on larger screens) -->
 <div class="w-full lg:w-[480px] shrink-0">

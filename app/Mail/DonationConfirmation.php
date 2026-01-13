@@ -8,17 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Donation;
 
 class DonationConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $donation;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Donation $donation)
     {
-        //
+        $this->donation = $donation;
     }
 
     /**
@@ -27,7 +30,7 @@ class DonationConfirmation extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Donation Confirmation',
+            subject: 'Thank You for Your Donation - Australian Relief NGO',
         );
     }
 
@@ -37,7 +40,10 @@ class DonationConfirmation extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.donation-confirmation',
+            with: [
+                'donation' => $this->donation,
+            ],
         );
     }
 

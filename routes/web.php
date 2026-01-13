@@ -6,6 +6,11 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// Default login route for Laravel authentication redirects
+Route::get('/login', function () {
+    return redirect('/admin/login');
+})->name('login');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -14,17 +19,19 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/programs', function () {
-    return view('programs');
-})->name('programs');
+Route::post('/contact', [App\Http\Controllers\PublicController::class, 'submitContact'])->name('contact.submit');
+
+Route::get('/programs', [App\Http\Controllers\PublicController::class, 'showPrograms'])->name('programs');
+Route::get('/programs/{program}', [App\Http\Controllers\PublicController::class, 'showProgram'])->name('programs.show');
 
 Route::get('/volunteer', function () {
     return view('volunteer');
 })->name('volunteer');
 
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
+Route::post('/volunteer/apply', [App\Http\Controllers\PublicController::class, 'submitVolunteerApplication'])->name('volunteer.apply');
+
+Route::get('/blog', [App\Http\Controllers\PublicController::class, 'showBlog'])->name('blog');
+Route::get('/blog/{slug}', [App\Http\Controllers\PublicController::class, 'showBlogPost'])->name('blog.show');
 
 // Blog Detail Routes
 Route::get('/blog/community-garden-project', function () {
@@ -571,36 +578,69 @@ Route::get('/donate', function () {
     return view('donate');
 })->name('donate');
 
-Route::get('/admin/login', function () {
-    return view('admin.login');
-});
+Route::get('/annual-reports', function () {
+    return view('annual-reports');
+})->name('annual-reports');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
 
-Route::get('/admin/volunteers', function () {
-    return view('admin.volunteers');
-});
+Route::get('/terms-of-service', function () {
+    return view('terms-of-service');
+})->name('terms-of-service');
 
-Route::get('/admin/programs', function () {
-    return view('admin.programs');
-});
+Route::get('/faqs', function () {
+    return view('faqs');
+})->name('faqs');
 
-Route::get('/admin/blog', function () {
-    return view('admin.blog');
-});
+Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [App\Http\Controllers\AdminController::class, 'login']);
+Route::post('/admin/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
 
-Route::get('/admin/analytics', function () {
-    return view('admin.analytics');
-});
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/analytics', [App\Http\Controllers\AdminController::class, 'analytics'])->name('admin.analytics');
 
-Route::get('/admin/settings', function () {
-    return view('admin.settings');
-});
+    // Volunteers Management
+    Route::get('/admin/volunteers', [App\Http\Controllers\AdminController::class, 'volunteers'])->name('admin.volunteers');
+    Route::get('/admin/volunteers/export', [App\Http\Controllers\AdminController::class, 'exportVolunteers'])->name('admin.volunteers.export');
+    Route::patch('/admin/volunteers/{volunteer}/status', [App\Http\Controllers\AdminController::class, 'updateVolunteerStatus'])->name('admin.volunteers.update-status');
+    Route::delete('/admin/volunteers/{volunteer}', [App\Http\Controllers\AdminController::class, 'destroyVolunteer'])->name('admin.volunteers.destroy');
 
-Route::get('/admin/donations', function () {
-    return view('admin.donations');
+    // Programs Management
+    Route::get('/admin/programs', [App\Http\Controllers\AdminController::class, 'programs'])->name('admin.programs');
+    Route::get('/admin/programs/export', [App\Http\Controllers\AdminController::class, 'exportPrograms'])->name('admin.programs.export');
+    Route::post('/admin/programs', [App\Http\Controllers\AdminController::class, 'storeProgram'])->name('admin.programs.store');
+    Route::patch('/admin/programs/{program}', [App\Http\Controllers\AdminController::class, 'updateProgram'])->name('admin.programs.update');
+    Route::delete('/admin/programs/{program}', [App\Http\Controllers\AdminController::class, 'destroyProgram'])->name('admin.programs.destroy');
+
+    // Blog Management
+    Route::get('/admin/blog', [App\Http\Controllers\AdminController::class, 'blog'])->name('admin.blog');
+    Route::get('/admin/blog/create', [App\Http\Controllers\AdminController::class, 'createBlogPost'])->name('admin.blog.create');
+    Route::get('/admin/blog/{post}/edit', [App\Http\Controllers\AdminController::class, 'editBlogPost'])->name('admin.blog.edit');
+    Route::get('/admin/blog/export', [App\Http\Controllers\AdminController::class, 'exportBlogPosts'])->name('admin.blog.export');
+    Route::post('/admin/blog', [App\Http\Controllers\AdminController::class, 'storeBlogPost'])->name('admin.blog.store');
+    Route::patch('/admin/blog/{post}', [App\Http\Controllers\AdminController::class, 'updateBlogPost'])->name('admin.blog.update');
+    Route::delete('/admin/blog/{post}', [App\Http\Controllers\AdminController::class, 'destroyBlogPost'])->name('admin.blog.destroy');
+
+    // Donations Management
+    Route::get('/admin/donations', [App\Http\Controllers\AdminController::class, 'donations'])->name('admin.donations');
+    Route::get('/admin/donations/export', [App\Http\Controllers\AdminController::class, 'exportDonations'])->name('admin.donations.export');
+    Route::delete('/admin/donations/{donation}', [App\Http\Controllers\AdminController::class, 'destroyDonation'])->name('admin.donations.destroy');
+
+    // Contact Inquiries Management
+    Route::get('/admin/contact-inquiries', [App\Http\Controllers\AdminController::class, 'contactInquiries'])->name('admin.contact-inquiries');
+    Route::get('/admin/contact-inquiries/export', [App\Http\Controllers\AdminController::class, 'exportContactInquiries'])->name('admin.contact-inquiries.export');
+    Route::patch('/admin/contact-inquiries/{inquiry}/status', [App\Http\Controllers\AdminController::class, 'updateInquiryStatus'])->name('admin.contact-inquiries.update-status');
+    Route::delete('/admin/contact-inquiries/{inquiry}', [App\Http\Controllers\AdminController::class, 'destroyContactInquiry'])->name('admin.contact-inquiries.destroy');
+
+    // Settings Management
+    Route::get('/admin/settings', [App\Http\Controllers\AdminController::class, 'settings'])->name('admin.settings');
+    Route::patch('/admin/settings/profile', [App\Http\Controllers\AdminController::class, 'updateProfile'])->name('admin.settings.profile');
+    Route::patch('/admin/settings/password', [App\Http\Controllers\AdminController::class, 'changePassword'])->name('admin.settings.password');
+    Route::patch('/admin/settings/system', [App\Http\Controllers\AdminController::class, 'updateSystemSettings'])->name('admin.settings.system');
+    Route::post('/admin/settings/reset', [App\Http\Controllers\AdminController::class, 'resetSettings'])->name('admin.settings.reset');
 });
 
 // Payment Routes
@@ -608,7 +648,20 @@ Route::post('/donate/submit', [App\Http\Controllers\DonationController::class, '
 Route::get('/payment/select', [App\Http\Controllers\DonationController::class, 'showPaymentSelection'])->name('payment.select');
 Route::post('/payment/process', [App\Http\Controllers\PaymentController::class, 'process'])->name('payment.process');
 Route::get('/payment/success', [App\Http\Controllers\DonationController::class, 'showSuccess'])->name('donation.success');
-Route::get('/paypal/success', [App\Http\Controllers\PaymentController::class, 'paypalSuccess'])->name('paypal.success');
-Route::get('/paypal/cancel', function() {
-    return redirect()->route('donate')->with('error', 'PayPal payment was cancelled.');
-})->name('paypal.cancel');
+
+// Stripe Payment Routes
+Route::get('/payment/stripe', [App\Http\Controllers\PaymentController::class, 'showStripePayment'])->name('payment.stripe');
+Route::post('/payment/stripe/process', [App\Http\Controllers\PaymentController::class, 'processStripePayment'])->name('payment.stripe.process');
+
+// Crypto Payment Routes
+Route::get('/payment/crypto', [App\Http\Controllers\PaymentController::class, 'showCryptoPayment'])->name('payment.crypto');
+Route::post('/payment/crypto/process', [App\Http\Controllers\PaymentController::class, 'processCryptoPayment'])->name('payment.crypto.process');
+
+// Flutterwave Payment Routes
+Route::get('/payment/flutterwave', [App\Http\Controllers\PaymentController::class, 'showFlutterwavePayment'])->name('payment.flutterwave');
+Route::post('/payment/flutterwave/verify', [App\Http\Controllers\PaymentController::class, 'verifyFlutterwavePayment'])->name('payment.flutterwave.verify');
+
+
+
+// NOWPayments Routes
+Route::post('/payment/nowpayments/ipn', [App\Http\Controllers\PaymentController::class, 'handleNowPaymentsIPN'])->name('nowpayments.ipn');

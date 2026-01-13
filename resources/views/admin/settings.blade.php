@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+Resumen@extends('layouts.admin')
 
 @section('title', 'Admin Settings - NGO Australia')
 
@@ -58,7 +58,7 @@
 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-[#1a140e]"></div>
 </div>
 <div class="flex flex-col overflow-hidden">
-<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-sm font-bold truncate">NGO Admin</p>
 <p class="text-text-muted-light dark:text-text-muted-dark text-xs truncate">sarah@ausrelief.org</p>
 </div>
 </div>
@@ -111,10 +111,13 @@
 <p class="text-gray-500 dark:text-gray-400 text-base">Manage your account preferences and system configuration</p>
 </div>
 <div class="flex gap-3">
-<button class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-white bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-all shadow-sm flex items-center gap-2">
-<span class="material-symbols-outlined" style="font-size: 18px;">undo</span>
-                                Reset to Default
-                            </button>
+<form method="POST" action="{{ route('admin.settings.reset') }}" class="inline">
+    @csrf
+    <button type="submit" onclick="return confirm('Are you sure you want to reset all settings to default?')" class="px-4 py-2 text-sm font-semibold text-gray-700 dark:text-white bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-all shadow-sm flex items-center gap-2">
+        <span class="material-symbols-outlined" style="font-size: 18px;">undo</span>
+        Reset to Default
+    </button>
+</form>
 <button class="px-4 py-2 text-sm font-bold text-black bg-primary rounded-lg hover:bg-[#3ec71a] transition-colors shadow-[0_0_15px_rgba(76,223,32,0.3)] flex items-center gap-2">
 <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
                                 Save Changes
@@ -133,30 +136,37 @@
                             </h3>
 <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Update your personal information and profile details</p>
 </div>
-<div class="p-6 space-y-6">
+<form method="POST" action="{{ route('admin.settings.profile') }}" class="p-6 space-y-6">
+    @csrf
+    @method('PATCH')
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="text" value="Sarah"/>
+<input name="first_name" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="text" value="{{ session('profile.first_name', 'Sarah') }}"/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="text" value="Johnson"/>
+<input name="last_name" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="text" value="{{ session('profile.last_name', 'Johnson') }}"/>
 </div>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="email" value="sarah@ausrelief.org"/>
+<input name="email" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="email" value="{{ Auth::user()->email }}"/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="tel" value="+61 400 123 456"/>
+<input name="phone" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="tel" value="{{ session('profile.phone', '+61 400 123 456') }}"/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bio</label>
-<textarea class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none" rows="3" placeholder="Tell us about yourself...">Experienced administrator with 8+ years in NGO management and community development.</textarea>
+<textarea name="bio" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none" rows="3" placeholder="Tell us about yourself...">{{ session('profile.bio', 'Experienced administrator with 8+ years in NGO management and community development.') }}</textarea>
 </div>
+<div class="flex justify-end">
+<button type="submit" class="px-4 py-2 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg transition-colors">
+    Update Profile
+</button>
 </div>
+</form>
 </div>
 <!-- Security Settings -->
 <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl shadow-sm overflow-hidden">
@@ -167,24 +177,26 @@
                             </h3>
 <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage your account security and authentication</p>
 </div>
-<div class="p-6 space-y-6">
+<form method="POST" action="{{ route('admin.settings.password') }}" class="p-6 space-y-6">
+    @csrf
+    @method('PATCH')
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Password</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password"/>
+<input name="current_password" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password" required/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">New Password</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password"/>
+<input name="password" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password" required/>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Confirm New Password</label>
-<input class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password"/>
+<input name="password_confirmation" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors" type="password" required/>
 </div>
-<button class="w-full px-4 py-2 bg-primary hover:bg-[#3ec71a] text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+<button type="submit" class="w-full px-4 py-2 bg-primary hover:bg-[#3ec71a] text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
 <span class="material-symbols-outlined" style="font-size: 18px;">lock</span>
                                 Update Password
                             </button>
-</div>
+</form>
 </div>
 </div>
 <!-- Right Sidebar Settings -->
@@ -231,33 +243,40 @@
                             </h3>
 <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">General system preferences</p>
 </div>
-<div class="p-6 space-y-4">
+<form method="POST" action="{{ route('admin.settings.system') }}" class="p-6 space-y-4">
+    @csrf
+    @method('PATCH')
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Language</label>
-<select class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-<option>English (Australia)</option>
-<option>English (US)</option>
-<option>Spanish</option>
-<option>French</option>
+<select name="language" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+<option value="en" {{ session('system.language', 'en') === 'en' ? 'selected' : '' }}>English (Australia)</option>
+<option value="en_US" {{ session('system.language') === 'en_US' ? 'selected' : '' }}>English (US)</option>
+<option value="es" {{ session('system.language') === 'es' ? 'selected' : '' }}>Spanish</option>
+<option value="fr" {{ session('system.language') === 'fr' ? 'selected' : '' }}>French</option>
 </select>
 </div>
 <div class="space-y-2">
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Timezone</label>
-<select class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
-<option>Australia/Sydney</option>
-<option>Australia/Melbourne</option>
-<option>Australia/Brisbane</option>
-<option>UTC</option>
+<select name="timezone" class="w-full px-3 py-2 border border-gray-200 dark:border-white/10 rounded-lg bg-gray-50 dark:bg-surface-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors">
+<option value="Australia/Sydney" {{ session('system.timezone', 'Australia/Sydney') === 'Australia/Sydney' ? 'selected' : '' }}>Australia/Sydney</option>
+<option value="Australia/Melbourne" {{ session('system.timezone') === 'Australia/Melbourne' ? 'selected' : '' }}>Australia/Melbourne</option>
+<option value="Australia/Brisbane" {{ session('system.timezone') === 'Australia/Brisbane' ? 'selected' : '' }}>Australia/Brisbane</option>
+<option value="UTC" {{ session('system.timezone') === 'UTC' ? 'selected' : '' }}>UTC</option>
 </select>
 </div>
 <div class="flex items-center justify-between">
 <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Auto-save</span>
 <label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox" checked/>
+<input name="auto_save" class="sr-only peer" type="checkbox" value="1" {{ session('system.auto_save', true) ? 'checked' : '' }}/>
 <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25 dark:peer-focus:ring-primary/25 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
 </label>
 </div>
+<div class="flex justify-end pt-4">
+<button type="submit" class="px-4 py-2 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg transition-colors">
+    Save Settings
+</button>
 </div>
+</form>
 </div>
 </div>
 </div>

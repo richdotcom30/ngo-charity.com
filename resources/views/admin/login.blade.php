@@ -71,14 +71,15 @@
 <div class="h-px flex-1 bg-white/10"></div>
 </div>
 <!-- Input Fields -->
-<form class="flex flex-col gap-5">
+<form method="POST" action="{{ route('admin.login') }}" class="flex flex-col gap-5">
+@csrf
 <div class="space-y-1.5">
 <label class="text-sm font-semibold text-gray-300 ml-1" for="email">Email Address</label>
 <div class="relative group">
 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors text-[20px]">mail</span>
 </div>
-<input class="block w-full rounded-lg border border-[#406336]/50 bg-[#20321b]/50 pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-sm" id="email" placeholder="name@example.com" required="" type="email"/>
+<input class="block w-full rounded-lg border border-[#406336]/50 bg-[#20321b]/50 pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-sm" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
 </div>
 </div>
 <div class="space-y-1.5">
@@ -90,7 +91,7 @@
 <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors text-[20px]">lock</span>
 </div>
-<input class="block w-full rounded-lg border border-[#406336]/50 bg-[#20321b]/50 pl-11 pr-11 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-sm" id="password" placeholder="••••••••" required="" type="password"/>
+<input class="block w-full rounded-lg border border-[#406336]/50 bg-[#20321b]/50 pl-11 pr-11 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-sm" id="password" name="password" placeholder="••••••••" required="" type="password"/>
 <div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer text-gray-500 hover:text-gray-300 transition-colors">
 <span class="material-symbols-outlined text-[20px]">visibility</span>
 </div>

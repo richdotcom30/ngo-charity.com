@@ -19,35 +19,31 @@
 </div>
 </div>
 <nav class="flex-1 overflow-y-auto px-4 pb-4 space-y-1">
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/dashboard">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.dashboard') }}">
 <span class="material-symbols-outlined filled">grid_view</span>
 <span class="text-sm font-bold">Dashboard</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="/admin/volunteers">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="{{ route('admin.volunteers') }}">
 <span class="material-symbols-outlined">diversity_3</span>
 <span class="text-sm font-medium">Volunteers</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/programs">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.programs') }}">
 <span class="material-symbols-outlined">calendar_month</span>
 <span class="text-sm font-medium">Programs</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/blog">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.blog') }}">
 <span class="material-symbols-outlined">article</span>
 <span class="text-sm font-medium">Blog</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/donations">
-<span class="material-symbols-outlined">volunteer_activism</span>
-<span class="text-sm font-medium">Donations</span>
-</a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#analytics">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.analytics') }}">
 <span class="material-symbols-outlined">analytics</span>
 <span class="text-sm font-medium">Analytics</span>
 </a>
 <div class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
 <p class="px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-2">System</p>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="#settings">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.contact-inquiries') }}">
 <span class="material-symbols-outlined">settings</span>
-<span class="text-sm font-medium">Settings</span>
+<span class="text-sm font-medium">Contact Inquiries</span>
 </a>
 </div>
 </nav>
@@ -58,14 +54,17 @@
 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-[#1a140e]"></div>
 </div>
 <div class="flex flex-col overflow-hidden">
-<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-sm font-bold truncate">NGO Admin</p>
 <p class="text-text-muted-light dark:text-text-muted-dark text-xs truncate">sarah@ausrelief.org</p>
 </div>
 </div>
-<button class="w-full flex items-center justify-center gap-2 rounded-lg h-10 bg-card-light dark:bg-[#2d2317] hover:bg-red-50 dark:hover:bg-red-900/20 text-text-main-light dark:text-text-main-dark hover:text-red-600 dark:hover:text-red-400 border border-border-light dark:border-border-dark transition-colors text-sm font-bold">
-<span class="material-symbols-outlined text-[20px]">logout</span>
-                Logout
-            </button>
+<form method="POST" action="{{ route('admin.logout') }}" class="w-full">
+    @csrf
+    <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-lg h-10 bg-card-light dark:bg-[#2d2317] hover:bg-red-50 dark:hover:bg-red-900/20 text-text-main-light dark:text-text-main-dark hover:text-red-600 dark:hover:text-red-400 border border-border-light dark:border-border-dark transition-colors text-sm font-bold">
+        <span class="material-symbols-outlined text-[20px]">logout</span>
+        Logout
+    </button>
+</form>
 </div>
 </aside>
 <!-- Main Content -->
@@ -116,10 +115,10 @@
 <p class="text-gray-500 dark:text-gray-400 text-lg max-w-2xl">Manage your registered volunteers, assign tasks, and track their impact on your community.</p>
 </div>
 <div class="flex items-center gap-3">
-<button class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-sm font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-gray-700 dark:text-gray-200">
+<a href="{{ route('admin.volunteers.export', request()->query()) }}" class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-sm font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-gray-700 dark:text-gray-200">
 <span class="material-symbols-outlined text-[20px]">download</span>
                                 Export CSV
-                            </button>
+                            </a>
 <button class="flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary hover:bg-[#42c51b] text-background-dark text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
 <span class="material-symbols-outlined text-[20px]">add</span>
                                 Add New Volunteer
@@ -166,38 +165,53 @@
 </div>
 </div>
 <!-- Search & Filters -->
-<div class="flex flex-col md:flex-row gap-4">
+<form method="GET" action="{{ route('admin.volunteers') }}" class="flex flex-col md:flex-row gap-4">
 <div class="flex-1 relative">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-400 text-[22px]">search</span>
 </div>
-<input class="w-full h-12 pl-11 pr-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search by name, email, or role..." type="text"/>
+<input name="search" value="{{ request('search') }}" class="w-full h-12 pl-11 pr-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search by name, email, or phone..." type="text"/>
 </div>
 <div class="flex gap-3">
 <div class="relative min-w-[140px]">
-<select class="appearance-none w-full h-12 px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
-<option>All Roles</option>
-<option>Driver</option>
-<option>Event Staff</option>
-<option>Coordinator</option>
+<select name="status" class="appearance-none w-full h-12 px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
+<option value="all" {{ request('status') === 'all' || !request('status') ? 'selected' : '' }}>All Status</option>
+<option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pending</option>
+<option value="approved" {{ request('status') === 'approved' ? 'selected' : '' }}>Approved</option>
+<option value="active" {{ request('status') === 'active' ? 'selected' : '' }}>Active</option>
+<option value="inactive" {{ request('status') === 'inactive' ? 'selected' : '' }}>Inactive</option>
+<option value="rejected" {{ request('status') === 'rejected' ? 'selected' : '' }}>Rejected</option>
 </select>
 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-400 text-[20px]">expand_more</span>
 </div>
 </div>
 <div class="relative min-w-[140px]">
-<select class="appearance-none w-full h-12 px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
-<option>Status: Any</option>
-<option>Active</option>
-<option>Pending</option>
-<option>On Leave</option>
+<select name="experience_level" class="appearance-none w-full h-12 px-4 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer">
+<option value="all" {{ request('experience_level') === 'all' || !request('experience_level') ? 'selected' : '' }}>All Levels</option>
+<option value="beginner" {{ request('experience_level') === 'beginner' ? 'selected' : '' }}>Beginner</option>
+<option value="intermediate" {{ request('experience_level') === 'intermediate' ? 'selected' : '' }}>Intermediate</option>
+<option value="advanced" {{ request('experience_level') === 'advanced' ? 'selected' : '' }}>Advanced</option>
+<option value="expert" {{ request('experience_level') === 'expert' ? 'selected' : '' }}>Expert</option>
 </select>
 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-400 text-[20px]">expand_more</span>
 </div>
 </div>
+<div class="flex gap-2">
+<input name="date_from" value="{{ request('date_from') }}" type="date" class="h-12 px-3 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="From">
+<input name="date_to" value="{{ request('date_to') }}" type="date" class="h-12 px-3 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="To">
+</div>
+<div class="flex gap-2">
+<button type="submit" class="h-12 px-6 rounded-full bg-primary hover:bg-primary-hover text-white font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</button>
+<a href="{{ route('admin.volunteers') }}" class="h-12 px-4 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-700 dark:text-gray-300 font-medium transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">clear</span>
+</a>
 </div>
 </div>
+</form>
 <!-- Volunteers List Table -->
 <div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm">
 <div class="overflow-x-auto">

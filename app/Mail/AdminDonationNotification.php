@@ -8,17 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Donation;
 
 class AdminDonationNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $donation;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Donation $donation)
     {
-        //
+        $this->donation = $donation;
     }
 
     /**
@@ -27,7 +30,7 @@ class AdminDonationNotification extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Admin Donation Notification',
+            subject: 'New Donation Received - $' . number_format($this->donation->amount, 2) . ' from ' . $this->donation->first_name . ' ' . $this->donation->last_name,
         );
     }
 
@@ -37,7 +40,10 @@ class AdminDonationNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.admin-donation-notification',
+            with: [
+                'donation' => $this->donation,
+            ],
         );
     }
 

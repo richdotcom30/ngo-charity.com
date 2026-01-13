@@ -19,35 +19,35 @@
 </div>
 </div>
 <nav class="flex-1 overflow-y-auto px-4 pb-4 space-y-1">
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/dashboard">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.dashboard') }}">
 <span class="material-symbols-outlined filled">grid_view</span>
 <span class="text-sm font-bold">Dashboard</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/donations">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.donations') }}">
 <span class="material-symbols-outlined">volunteer_activism</span>
 <span class="text-sm font-medium">Donations</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/volunteers">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.volunteers') }}">
 <span class="material-symbols-outlined">diversity_3</span>
 <span class="text-sm font-medium">Volunteers</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/programs">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.programs') }}">
 <span class="material-symbols-outlined">calendar_month</span>
 <span class="text-sm font-medium">Programs</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/blog">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.blog') }}">
 <span class="material-symbols-outlined">article</span>
 <span class="text-sm font-medium">Blog</span>
 </a>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="/admin/analytics">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white transition-all" href="{{ route('admin.analytics') }}">
 <span class="material-symbols-outlined">analytics</span>
 <span class="text-sm font-medium">Analytics</span>
 </a>
 <div class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
 <p class="px-3 text-xs font-semibold text-text-muted-light dark:text-text-muted-dark uppercase tracking-wider mb-2">System</p>
-<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="/admin/settings">
+<a class="group flex items-center gap-3 px-3 py-3 rounded-lg text-text-muted-light dark:text-text-muted-dark hover:bg-background-light dark:hover:bg-[#2d2317] hover:text-primary dark:hover:text-white transition-all" href="{{ route('admin.contact-inquiries') }}">
 <span class="material-symbols-outlined">settings</span>
-<span class="text-sm font-medium">Settings</span>
+<span class="text-sm font-medium">Contact Inquiries</span>
 </a>
 </div>
 </nav>
@@ -58,14 +58,17 @@
 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-white dark:border-[#1a140e]"></div>
 </div>
 <div class="flex flex-col overflow-hidden">
-<p class="text-sm font-bold truncate">Sarah Johnson</p>
+<p class="text-sm font-bold truncate">NGO Admin</p>
 <p class="text-text-muted-light dark:text-text-muted-dark text-xs truncate">sarah@ausrelief.org</p>
 </div>
 </div>
-<button class="w-full flex items-center justify-center gap-2 rounded-lg h-10 bg-card-light dark:bg-[#2d2317] hover:bg-red-50 dark:hover:bg-red-900/20 text-text-main-light dark:text-text-main-dark hover:text-red-600 dark:hover:text-red-400 border border-border-light dark:border-border-dark transition-colors text-sm font-bold">
-<span class="material-symbols-outlined text-[20px]">logout</span>
-                Logout
-            </button>
+<form method="POST" action="{{ route('admin.logout') }}" class="w-full">
+    @csrf
+    <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-lg h-10 bg-card-light dark:bg-[#2d2317] hover:bg-red-50 dark:hover:bg-red-900/20 text-text-main-light dark:text-text-main-dark hover:text-red-600 dark:hover:text-red-400 border border-border-light dark:border-border-dark transition-colors text-sm font-bold">
+        <span class="material-symbols-outlined text-[20px]">logout</span>
+        Logout
+    </button>
+</form>
 </div>
 </aside>
 <!-- Main Content -->
@@ -199,8 +202,8 @@
 <div class="lg:col-span-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-white/5 rounded-xl p-6 shadow-sm">
 <div class="flex items-center justify-between mb-6">
 <div>
-<h3 class="text-lg font-bold text-gray-900 dark:text-white">Funding Trends</h3>
-<p class="text-sm text-gray-500 dark:text-gray-400">Donations received over the current fiscal year</p>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Donation Trends</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">Monthly donation amounts over the past year</p>
 </div>
 <div class="flex gap-2">
 <button class="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-white/5 text-gray-400 transition-colors">
@@ -208,46 +211,9 @@
 </button>
 </div>
 </div>
-<!-- Chart Placeholder -->
+<!-- Chart Canvas -->
 <div class="relative h-64 w-full">
-<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 800 300">
-<defs>
-<lineargradient id="gradientGreen" x1="0" x2="0" y1="0" y2="1">
-<stop offset="0%" stop-color="#4cdf20" stop-opacity="0.3"></stop>
-<stop offset="100%" stop-color="#4cdf20" stop-opacity="0"></stop>
-</lineargradient>
-</defs>
-<!-- Grid Lines -->
-<line opacity="0.2" stroke="#374151" stroke-dasharray="4" stroke-width="1" x1="0" x2="800" y1="250" y2="250"></line>
-<line opacity="0.2" stroke="#374151" stroke-dasharray="4" stroke-width="1" x1="0" x2="800" y1="175" y2="175"></line>
-<line opacity="0.2" stroke="#374151" stroke-dasharray="4" stroke-width="1" x1="0" x2="800" y1="100" y2="100"></line>
-<!-- Area Path -->
-<path d="M0,250 C100,240 150,200 200,180 C250,160 300,210 350,190 C400,170 450,100 500,80 C550,60 600,120 650,100 C700,80 750,40 800,20 V300 H0 Z" fill="url(#gradientGreen)"></path>
-<!-- Line Path -->
-<path d="M0,250 C100,240 150,200 200,180 C250,160 300,210 350,190 C400,170 450,100 500,80 C550,60 600,120 650,100 C700,80 750,40 800,20" fill="none" stroke="#4cdf20" stroke-linecap="round" stroke-width="3"></path>
-<!-- Data Points -->
-<circle cx="200" cy="180" fill="#152111" r="4" stroke="#4cdf20" stroke-width="2"></circle>
-<circle cx="500" cy="80" fill="#152111" r="4" stroke="#4cdf20" stroke-width="2"></circle>
-<circle cx="800" cy="20" fill="#4cdf20" r="6" stroke="#fff" stroke-width="2"></circle>
-</svg>
-<!-- Floating Tooltip Example -->
-<div class="absolute top-0 right-0 transform -translate-x-full translate-y-4 bg-surface-dark text-white p-3 rounded-lg shadow-lg border border-gray-200 dark:border-white/5">
-<p class="text-xs text-gray-400 uppercase font-bold tracking-wider mb-1">Current</p>
-<p class="text-xl font-bold text-white">$14,230</p>
-</div>
-</div>
-<!-- X Axis Labels -->
-<div class="flex justify-between mt-4 px-2 text-xs font-medium text-gray-400 dark:text-gray-500">
-<span>Jan</span>
-<span>Feb</span>
-<span>Mar</span>
-<span>Apr</span>
-<span>May</span>
-<span>Jun</span>
-<span>Jul</span>
-<span>Aug</span>
-<span>Sep</span>
-<span>Oct</span>
+<canvas id="donationChart"></canvas>
 </div>
 </div>
 <!-- Secondary Breakdown Chart -->
@@ -396,3 +362,214 @@
 </div>
 </div>
 @endsection
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Donation Trends Chart
+    const donationCtx = document.getElementById('donationChart').getContext('2d');
+
+    const donationData = @json($donationStats['monthly_data']);
+    const labels = donationData.map(item => item.month);
+    const values = donationData.map(item => item.total);
+
+    new Chart(donationCtx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Donations ($)',
+                data: values,
+                borderColor: '#4cdf20',
+                backgroundColor: 'rgba(76, 223, 32, 0.1)',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: '#4cdf20',
+                pointBorderColor: '#fff',
+                pointBorderWidth: 2,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    callbacks: {
+                        label: function(context) {
+                            return '$' + context.parsed.y.toLocaleString();
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            }
+        }
+    });
+
+    // Payment Methods Pie Chart
+    const paymentSection = document.createElement('div');
+    paymentSection.className = 'mt-6';
+    paymentSection.innerHTML = `
+        <h4 class="text-md font-semibold text-gray-900 dark:text-white mb-4">Payment Methods</h4>
+        <div class="flex items-center justify-center">
+            <canvas id="paymentChart" width="200" height="200"></canvas>
+        </div>
+    `;
+
+    const mainChartContainer = document.querySelector('.lg\\:col-span-2');
+    mainChartContainer.appendChild(paymentSection);
+
+    const paymentChartCtx = document.getElementById('paymentChart').getContext('2d');
+    const paymentData = @json($donationStats['payment_methods']);
+
+    new Chart(paymentChartCtx, {
+        type: 'doughnut',
+        data: {
+            labels: paymentData.map(item => item.method),
+            datasets: [{
+                data: paymentData.map(item => item.total),
+                backgroundColor: [
+                    '#4cdf20',
+                    '#3b82f6',
+                    '#8b5cf6',
+                    '#f59e0b',
+                    '#ef4444'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.label + ': $' + context.parsed.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Volunteer Experience Levels Chart
+    const volunteerData = @json($volunteerStats['experience_levels']);
+    const volunteerSection = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3 .bg-white.dark\\:bg-surface-dark.border:last-child');
+
+    if (volunteerSection && volunteerData.length > 0) {
+        const chartContainer = document.createElement('div');
+        chartContainer.className = 'mt-6';
+        chartContainer.innerHTML = `
+            <h4 class="text-md font-semibold text-gray-900 dark:text-white mb-4">Volunteer Experience Levels</h4>
+            <canvas id="volunteerChart" height="200"></canvas>
+        `;
+        volunteerSection.appendChild(chartContainer);
+
+        const volunteerChartCtx = document.getElementById('volunteerChart').getContext('2d');
+        new Chart(volunteerChartCtx, {
+            type: 'bar',
+            data: {
+                labels: volunteerData.map(item => item.level),
+                datasets: [{
+                    data: volunteerData.map(item => item.count),
+                    backgroundColor: '#4cdf20',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Program Status Distribution
+    const programStatusData = @json($programStats['status_distribution']);
+    const programImpactSection = document.querySelector('.flex.flex-col .bg-white.dark\\:bg-surface-dark:last-child');
+
+    if (programImpactSection && programStatusData.length > 0) {
+        const statusContainer = document.createElement('div');
+        statusContainer.className = 'mt-6';
+        statusContainer.innerHTML = `
+            <h4 class="text-md font-semibold text-gray-900 dark:text-white mb-4">Program Status</h4>
+            <canvas id="programStatusChart" height="150"></canvas>
+        `;
+        programImpactSection.appendChild(statusContainer);
+
+        const programStatusChartCtx = document.getElementById('programStatusChart').getContext('2d');
+        new Chart(programStatusChartCtx, {
+            type: 'pie',
+            data: {
+                labels: programStatusData.map(item => item.status),
+                datasets: [{
+                    data: programStatusData.map(item => item.count),
+                    backgroundColor: [
+                        '#4cdf20',
+                        '#3b82f6',
+                        '#f59e0b',
+                        '#ef4444'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+});
+</script>

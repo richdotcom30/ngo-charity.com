@@ -39,7 +39,7 @@
 <!-- Secure Header -->
 <div class="mb-8 flex items-center justify-between">
 <h3 class="text-2xl font-bold text-white">Make a Donation</h3>
-<div class="flex items-center gap-2 text-text-muted text-sm">
+<div class="flex items-center gap-2 text-white text-sm">
 <span class="material-symbols-outlined text-[18px]">lock</span>
                             Secure Payment
                         </div>
@@ -51,13 +51,13 @@
 <div class="mb-8 p-1.5 bg-surface-dark rounded-full inline-flex w-full sm:w-auto border border-border-green">
 <label class="cursor-pointer relative flex-1 sm:flex-none">
 <input checked="" class="peer sr-only" name="frequency" type="radio" value="once"/>
-<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-text-muted transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white">
+<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-white transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white">
                                 Give Once
                             </div>
 </label>
 <label class="cursor-pointer relative flex-1 sm:flex-none">
 <input class="peer sr-only" name="frequency" type="radio" value="monthly"/>
-<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-text-muted transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white flex items-center justify-center gap-2">
+<div class="px-8 py-2.5 rounded-full text-center text-sm font-bold text-white transition-all peer-checked:bg-primary peer-checked:text-background-dark peer-checked:shadow-lg hover:text-white flex items-center justify-center gap-2">
 <span class="material-symbols-outlined text-[16px]">favorite</span> Monthly
                             </div>
 </label>
@@ -69,12 +69,12 @@
 <input class="peer sr-only" name="amount" type="radio" value="20"/>
 <div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
 <div class="flex justify-between items-start">
-<span class="text-2xl font-black text-white">$20</span>
+<span class="text-2xl font-black text-white">A$20</span>
 <div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
 <div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
 </div>
 </div>
-<p class="text-xs text-text-muted leading-tight">Feeds a family for a day</p>
+<p class="text-xs text-white leading-tight">Feeds a family for a day</p>
 </div>
 </label>
 <!-- Option 2 (Popular) -->
@@ -83,12 +83,12 @@
 <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-background-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide shadow-sm z-10">Popular</span>
 <div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
 <div class="flex justify-between items-start">
-<span class="text-2xl font-black text-white">$50</span>
+<span class="text-2xl font-black text-white">A$50</span>
 <div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
 <div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
 </div>
 </div>
-<p class="text-xs text-text-muted leading-tight">Emergency shelter kit</p>
+<p class="text-xs text-white leading-tight">Emergency shelter kit</p>
 </div>
 </label>
 <!-- Option 3 -->
@@ -96,12 +96,12 @@
 <input class="peer sr-only" name="amount" type="radio" value="100"/>
 <div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
 <div class="flex justify-between items-start">
-<span class="text-2xl font-black text-white">$100</span>
+<span class="text-2xl font-black text-white">A$100</span>
 <div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
 <div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
 </div>
 </div>
-<p class="text-xs text-text-muted leading-tight">School supplies for a child</p>
+<p class="text-xs text-white leading-tight">School supplies for a child</p>
 </div>
 </label>
 <!-- Option 4 -->
@@ -109,12 +109,12 @@
 <input class="peer sr-only" name="amount" type="radio" value="250"/>
 <div class="h-full flex flex-col gap-2 p-4 rounded-2xl border border-border-green bg-surface-dark transition-all peer-checked:border-primary peer-checked:bg-primary/10 peer-checked:ring-1 peer-checked:ring-primary group-hover:border-primary/50">
 <div class="flex justify-between items-start">
-<span class="text-2xl font-black text-white">$250</span>
+<span class="text-2xl font-black text-white">A$250</span>
 <div class="size-5 rounded-full border border-border-green peer-checked:bg-primary peer-checked:border-primary flex items-center justify-center transition-colors">
 <div class="size-2 rounded-full bg-background-dark opacity-0 peer-checked:opacity-100"></div>
 </div>
 </div>
-<p class="text-xs text-text-muted leading-tight">Community building fund</p>
+<p class="text-xs text-white leading-tight">Community building fund</p>
 </div>
 </label>
 </div>
@@ -123,14 +123,14 @@
 <div class="relative group">
 <label class="sr-only" for="custom-amount">Custom Amount</label>
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-<span class="text-white text-lg font-bold">$</span>
+<span class="text-white text-lg font-bold">A$</span>
 </div>
 <input class="block w-full rounded-2xl border border-border-green bg-surface-dark pl-10 pr-20 py-4 text-white placeholder-text-muted focus:border-primary focus:ring-1 focus:ring-primary text-lg font-medium transition-all group-hover:border-primary/50" id="custom-amount" name="custom_amount" placeholder="Enter custom amount" type="number" min="1" max="100000"/>
 <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-<span class="text-text-muted font-medium">AUD</span>
+<span class="text-white font-medium">AUD</span>
 </div>
 </div>
-<p class="text-xs text-text-muted mt-2">Or enter a custom amount above</p>
+<p class="text-xs text-white mt-2">Or enter a custom amount above</p>
 </div>
 <!-- Personal Information -->
 <div class="mb-8 space-y-4">
@@ -148,7 +148,7 @@
 </button>
 <!-- Trust Indicators -->
 <div class="mt-8 flex flex-col items-center gap-6 border-t border-border-green pt-8">
-<p class="text-center text-xs text-text-muted">
+<p class="text-center text-xs text-white">
                             All donations are tax-deductible in Australia. We are a registered charity.
                         </p>
 <div class="flex flex-wrap justify-center items-center gap-6 opacity-60 grayscale transition-all hover:grayscale-0 hover:opacity-100">

@@ -25,11 +25,11 @@
 <div>
 <h4 class="font-bold text-lg mb-6">Quick Links</h4>
 <ul class="flex flex-col gap-3 text-gray-400 text-sm">
-<li><a class="hover:text-primary transition-colors" href="/about">About Us</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Our Programs</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Volunteer Opportunities</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">News & Stories</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Annual Reports</a></li>
+<li><a class="hover:text-primary transition-colors" href="{{ route('about') }}">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="{{ route('programs') }}">Our Programs</a></li>
+<li><a class="hover:text-primary transition-colors" href="{{ route('volunteer') }}">Volunteer Opportunities</a></li>
+<li><a class="hover:text-primary transition-colors" href="{{ route('blog') }}">News & Stories</a></li>
+<li><a class="hover:text-primary transition-colors" href="{{ route('annual-reports') }}">Annual Reports</a></li>
 </ul>
 </div>
 <!-- Contact -->
@@ -65,8 +65,8 @@
 <div class="max-w-[1100px] mx-auto px-6 pt-8 border-t border-[#1e2f1b] flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
 <p>© 2024 NGO Australia. All rights reserved. ABN 12 345 678 901.</p>
 <div class="flex gap-6">
-<a class="hover:text-white" href="#">Privacy Policy</a>
-<a class="hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-white" href="{{ route('privacy-policy') }}">Privacy Policy</a>
+<a class="hover:text-white" href="{{ route('terms-of-service') }}">Terms of Service</a>
 </div>
 </div>
 </footer>

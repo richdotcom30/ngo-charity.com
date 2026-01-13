@@ -1,59 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏠 NGO Charity Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive, full-stack web application built with Laravel for NGO Australia, featuring secure donation processing, admin management, and modern responsive design.
 
-## About Laravel
+## ✨ Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 💳 **Multi-Gateway Payment System**
+- **Stripe** - Credit/Debit card payments with 3D Secure
+- **NOWPayments** - Cryptocurrency donations (100+ coins)
+- **Flutterwave** - Global payments with multiple methods
+- **Real-time Processing** - Instant confirmations and notifications
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 👨‍💼 **Admin Dashboard**
+- **Donation Management** - Complete transaction tracking with detailed modals
+- **Volunteer Applications** - Application review and status management
+- **Program Management** - CRUD operations for NGO programs
+- **Blog Management** - Content creation and publishing
+- **Analytics Dashboard** - Real-time statistics and reporting
+- **Contact Inquiries** - Customer support management
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🎨 **Modern UI/UX**
+- **Responsive Design** - Mobile-first approach
+- **Dark/Light Mode** - User preference support
+- **Material Design** - Professional interface components
+- **Accessibility** - WCAG compliant design
+- **Progressive Web App** - PWA capabilities
 
-## Learning Laravel
+### 🔒 **Security & Compliance**
+- **PCI DSS Compliance** - Secure payment processing
+- **CSRF Protection** - Laravel built-in security
+- **Input Validation** - Server-side validation
+- **Role-Based Access** - Admin authentication
+- **Data Encryption** - Sensitive data protection
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🚀 **Quick Start with Docker**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
+- Docker & Docker Compose
+- Git
 
-## Laravel Sponsors
+### Development Setup
+```bash
+# Clone the repository
+git clone https://github.com/your-username/ngo-charity.com.git
+cd ngo-charity.com
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Copy Docker environment file
+cp .env.docker .env
 
-### Premium Partners
+# Start Docker containers
+docker-compose up -d
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Install dependencies (if needed)
+docker-compose exec app composer install
+docker-compose exec app npm install
 
-## Contributing
+# Run database migrations
+docker-compose exec app php artisan migrate --seed
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Generate application key
+docker-compose exec app php artisan key:generate
 
-## Code of Conduct
+# Build frontend assets
+docker-compose exec app npm run build
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Access the Application
+- **Frontend**: http://localhost:8000
+- **Admin Panel**: http://localhost:8000/admin/login
+- **Database**: localhost:3306 (ngo_user/password)
+- **Redis**: localhost:6379
 
-## Security Vulnerabilities
+### Useful Docker Commands
+```bash
+# View container logs
+docker-compose logs -f
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Access container shell
+docker-compose exec app bash
 
-## License
+# Stop containers
+docker-compose down
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Rebuild containers
+docker-compose up --build
+```
+
+## 🛠️ **Manual Installation**
+
+### Requirements
+- PHP 8.1+
+- MySQL 8.0+ / MariaDB 10.5+
+- Composer
+- Node.js 16+
+- npm
+
+### Installation Steps
+```bash
+# Install PHP dependencies
+composer install
+
+# Install Node.js dependencies
+npm install
+
+# Copy environment file
+cp .env.example .env
+
+# Generate application key
+php artisan key:generate
+
+# Configure database in .env file
+# Run migrations
+php artisan migrate --seed
+
+# Build assets
+npm run build
+
+# Start development server
+php artisan serve
+```
+
+## 🔑 **Payment Gateway Setup**
+
+### Stripe (Test Mode)
+```env
+STRIPE_KEY=pk_test_51EXAMPLE...
+STRIPE_SECRET=sk_test_51EXAMPLE...
+```
+
+**Test Cards:**
+- Success: `4242 4242 4242 4242`
+- Decline: `4000 0000 0000 0002`
+
+### NOWPayments (Test Mode)
+```env
+NOWPAYMENTS_API_KEY=your_test_api_key
+NOWPAYMENTS_IPN_SECRET=your_test_secret
+```
+
+### Flutterwave (Test Mode)
+```env
+FLUTTERWAVE_PUBLIC_KEY=FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X
+FLUTTERWAVE_SECRET_KEY=FLWSECK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X
+```
+
+## 👨‍💼 **Admin Access**
+
+### Default Admin Account
+- **Email**: admin@ngo-australia.test
+- **Password**: password (change in production)
+
+### Admin Features
+- **Dashboard**: Analytics and quick stats
+- **Donations**: Transaction management with detail modals
+- **Volunteers**: Application processing
+- **Programs**: NGO program management
+- **Blog**: Content publishing
+- **Analytics**: Reporting and insights
+
+## 📊 **Database Structure**
+
+### Key Tables
+- `users` - Admin authentication
+- `donations` - Payment transactions
+- `volunteers` - Volunteer applications
+- `programs` - NGO programs
+- `blog_posts` - Content management
+- `contact_inquiries` - Support tickets
+
+## 🏗️ **Architecture**
+
+### Tech Stack
+- **Backend**: Laravel 10.x (PHP 8.1+)
+- **Frontend**: Tailwind CSS + Alpine.js
+- **Database**: MySQL 8.0
+- **Cache**: Redis
+- **Payments**: Stripe, NOWPayments, Flutterwave
+- **Deployment**: Docker + Nginx
+
+### Project Structure
+```
+├── app/                    # Laravel application code
+│   ├── Http/Controllers/   # Controllers
+│   ├── Models/            # Eloquent models
+│   └── Mail/              # Email templates
+├── resources/             # Views and assets
+│   ├── views/             # Blade templates
+│   └── asset/             # CSS/JS assets
+├── routes/                # Route definitions
+├── database/              # Migrations and seeders
+├── docker/                # Docker configuration
+└── public/                # Public assets
+```
+
+## 🚀 **Production Deployment**
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for comprehensive production deployment guide including:
+- Server requirements
+- SSL configuration
+- Performance optimization
+- Backup strategies
+- Monitoring setup
+
+## 🧪 **Testing**
+
+```bash
+# Run PHP tests
+php artisan test
+
+# Run frontend tests
+npm test
+
+# Code analysis
+./vendor/bin/phpstan analyse
+
+# Check code style
+./vendor/bin/pint --test
+```
+
+## 📝 **API Documentation**
+
+RESTful API endpoints are available for:
+- Donation processing
+- Volunteer applications
+- Program management
+- Blog content
+- Admin operations
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 **Support**
+
+- **Issues**: [GitHub Issues](https://github.com/your-username/ngo-charity.com/issues)
+- **Documentation**: [DEPLOYMENT.md](DEPLOYMENT.md)
+- **Email**: support@ngo-australia.org
+
+---
+
+**🇦🇺 Built with ❤️ for NGO Australia - Supporting Communities Across the Nation**
