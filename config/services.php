@@ -35,4 +35,19 @@ return [
         ],
     ],
 
+    'stripe' => [
+        'key' => env('STRIPE_PUBLISHABLE_KEY'),
+        'secret' => env('STRIPE_SECRET_KEY'),
+    ],
+
+    'nowpayments' => [
+        'api_key' => env('NOWPAYMENTS_API_KEY'),
+        'ipn_secret' => env('NOWPAYMENTS_IPN_SECRET'),
+    ],
+
+    'flutterwave' => [
+        'secret' => env('FLUTTERWAVE_SECRET_KEY'),
+        'public' => env('FLUTTERWAVE_PUBLIC_KEY'),
+    ],
+
 ];

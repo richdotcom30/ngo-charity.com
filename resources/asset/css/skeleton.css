@@ -1,0 +1,487 @@
+/* ========================================
+   SKELETON LOADING SYSTEM
+   Global skeleton placeholders with shimmer
+   ======================================== */
+
+/* Base skeleton class */
+.skeleton {
+    background: linear-gradient(90deg,
+            #e2e8f0 0%,
+            #f1f5f9 50%,
+            #e2e8f0 100%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: 0.375rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark mode skeleton */
+.dark .skeleton {
+    background: linear-gradient(90deg,
+            #1e293b 0%,
+            #334155 50%,
+            #1e293b 100%);
+    background-size: 200% 100%;
+}
+
+/* Shimmer animation keyframes */
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Pulse animation for darker skeleton */
+.skeleton-pulse {
+    animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes skeleton-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Fade in animation for content reveal */
+@keyframes skeleton-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content that replaces skeleton */
+.skeleton-content {
+    animation: skeleton-fade-in 0.3s ease-out forwards;
+}
+
+/* Skeleton variants by element type */
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-text-sm {
+    height: 0.875rem;
+    margin-bottom: 0.375rem;
+}
+
+.skeleton-text-lg {
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-title {
+    height: 2rem;
+    width: 60%;
+    margin-bottom: 0.75rem;
+}
+
+.skeleton-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+}
+
+.skeleton-avatar-lg {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 9999px;
+}
+
+.skeleton-button {
+    height: 2.5rem;
+    width: 8rem;
+    border-radius: 9999px;
+}
+
+.skeleton-card {
+    height: 200px;
+    border-radius: 1rem;
+}
+
+.skeleton-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 0.5rem;
+}
+
+.skeleton-square {
+    width: 100px;
+    height: 100px;
+    border-radius: 0.5rem;
+}
+
+.skeleton-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/* Skeleton layout components */
+.skeleton-header {
+    height: 5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dark .skeleton-header {
+    border-bottom-color: #334155;
+}
+
+.skeleton-nav {
+    height: 3rem;
+    width: 100%;
+}
+
+.skeleton-hero {
+    height: 400px;
+    border-radius: 1rem;
+}
+
+.skeleton-section {
+    min-height: 300px;
+    padding: 2rem;
+}
+
+.skeleton-footer {
+    height: 200px;
+    margin-top: auto;
+}
+
+/* Grid skeleton for card layouts */
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.skeleton-grid-item {
+    height: 280px;
+    border-radius: 1rem;
+}
+
+/* Table skeleton */
+.skeleton-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skeleton-table th,
+.skeleton-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dark .skeleton-table th,
+.dark .skeleton-table td {
+    border-bottom-color: #334155;
+}
+
+.skeleton-table-row {
+    height: 3.5rem;
+}
+
+/* Form skeleton */
+.skeleton-input {
+    height: 3rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skeleton-textarea {
+    height: 6rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skeleton-label {
+    height: 1rem;
+    width: 30%;
+    margin-bottom: 0.5rem;
+}
+
+/* Skeleton overlay for AJAX content */
+.skeleton-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    border-radius: inherit;
+}
+
+.dark .skeleton-overlay {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.skeleton-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Loading state container */
+.loading-container {
+    position: relative;
+    min-height: 200px;
+}
+
+.loading-container .skeleton-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-container:not(.is-loading) .skeleton-content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loading-container.is-loading .skeleton {
+    display: block;
+}
+
+.loading-container:not(.is-loading) .skeleton {
+    display: none;
+}
+
+/* Responsive skeleton adjustments */
+@media (max-width: 768px) {
+    .skeleton-hero {
+        height: 250px;
+    }
+
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Skeleton visibility states */
+.skeleton-hidden {
+    display: none !important;
+}
+
+.skeleton-visible {
+    display: block !important;
+}
+
+/* Preload fallback - hide skeleton quickly if JS fails */
+noscript .skeleton {
+    display: none;
+}
+
+/* ========================================
+   GLOBAL PAGE SKELETON OVERLAY
+   Displays for exactly 2 seconds on page load
+   ======================================== */
+
+.global-skeleton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+}
+
+.global-skeleton.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.global-skeleton.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dark .global-skeleton {
+    background: #152111;
+}
+
+.global-skeleton-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Header Skeleton */
+.global-skeleton-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dark .global-skeleton-header {
+    border-bottom-color: #334155;
+}
+
+.skeleton-logo {
+    width: 180px;
+    height: 48px;
+    border-radius: 0.5rem;
+}
+
+.skeleton-nav-items {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.skeleton-nav-item {
+    width: 80px;
+    height: 24px;
+    border-radius: 0.25rem;
+}
+
+/* Hero Skeleton */
+.global-skeleton-hero {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.skeleton-hero-title {
+    width: 60%;
+    height: 48px;
+    margin: 0 auto 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.skeleton-hero-text {
+    width: 80%;
+    height: 20px;
+    margin: 0 auto 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.skeleton-hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skeleton-button-lg {
+    width: 160px;
+    height: 48px;
+    border-radius: 9999px;
+}
+
+.skeleton-button-outline {
+    width: 160px;
+    height: 48px;
+    border-radius: 9999px;
+}
+
+/* Content Skeleton */
+.global-skeleton-content {
+    padding: 2rem;
+}
+
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.skeleton-card-large {
+    height: 280px;
+    border-radius: 1rem;
+}
+
+.skeleton-section {
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dark .skeleton-section {
+    background: #1e293b;
+}
+
+.skeleton-section-title {
+    width: 40%;
+    height: 32px;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+}
+
+/* Footer Skeleton */
+.global-skeleton-footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 2rem;
+}
+
+.dark .global-skeleton-footer {
+    border-top-color: #334155;
+}
+
+.skeleton-footer-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.skeleton-footer-col {
+    height: 120px;
+    border-radius: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .skeleton-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skeleton-footer-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .global-skeleton-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .skeleton-nav-items {
+        display: none;
+    }
+
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-footer-cols {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-hero-title {
+        width: 80%;
+    }
+}

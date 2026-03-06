@@ -206,7 +206,7 @@
 <p class="text-text-secondary text-sm mt-1 truncate">{{ Str::limit(strip_tags($post->excerpt ?? $post->content), 80) }}</p>
 </div>
 <div class="flex items-center gap-2 self-end sm:self-center mt-2 sm:mt-0">
-<a href="{{ route('admin.blog') }}/{{ $post->id }}/edit" class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
+<a href="{{ route('admin.blog.edit', $post) }}" class="p-2 rounded-lg text-text-secondary hover:text-white hover:bg-[#2d3829] transition-colors" title="Edit">
 <span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
 </a>
 <form method="POST" action="{{ route('admin.blog.destroy', $post) }}" class="inline" onsubmit="return confirm('Are you sure you want to delete this blog post?')">

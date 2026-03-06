@@ -6,12 +6,26 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+            'security.headers' => \App\Http\Middleware\SecurityHeadersMiddleware::class,
+        ]);
+
+        // Apply security headers globally to all web routes
+        $middleware->web(append: [
+            \App\Http\Middleware\SecurityHeadersMiddleware::class,
+        ]);
+
+        // Exclude NOWPayments IPN webhook from CSRF protection
+        // (External webhooks cannot provide CSRF tokens)
+        $middleware->validateCsrfTokens(except: [
+            '/payment/nowpayments/ipn',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -63,9 +63,19 @@ class PaymentController extends Controller
             return response()->json(['success' => false, 'message' => 'Donation data not found'], 400);
         }
 
+        // Validate amount hasn't been tampered with
+        $expectedAmount = $donationData['amount'] ?? 0;
+        if (!is_numeric($expectedAmount) || $expectedAmount < 1 || $expectedAmount > 100000) {
+            return response()->json(['success' => false, 'message' => 'Invalid donation amount'], 400);
+        }
+
         try {
             // Verify payment with Flutterwave API
-            $secretKey = config('services.flutterwave.secret', 'FLWSECK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X');
+            $secretKey = config('services.flutterwave.secret');
+            
+            if (empty($secretKey) || str_contains($secretKey, 'your_flutterwave')) {
+                throw new \Exception('Flutterwave payment gateway is not properly configured');
+            }
 
             $curl = curl_init();
             curl_setopt_array($curl, [
@@ -171,8 +181,20 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Donation data not found'], 400);
         }
 
+        // Validate amount hasn't been tampered with
+        $amount = $donationData['amount'] ?? 0;
+        if (!is_numeric($amount) || $amount < 1 || $amount > 100000) {
+            return response()->json(['message' => 'Invalid donation amount'], 400);
+        }
+
         try {
-            Stripe::setApiKey(config('services.stripe.secret'));
+            $stripeSecret = config('services.stripe.secret');
+            
+            if (empty($stripeSecret) || str_contains($stripeSecret, 'your_stripe')) {
+                return response()->json(['message' => 'Payment gateway is not configured. Please contact support.'], 500);
+            }
+            
+            Stripe::setApiKey($stripeSecret);
 
             // Create payment intent
             $paymentIntent = \Stripe\PaymentIntent::create([
@@ -202,9 +224,14 @@ class PaymentController extends Controller
             }
 
         } catch (\Stripe\Exception\CardException $e) {
-            // Card was declined
+            // Card was declined - safe to show this message to user
             return response()->json(['message' => $e->getError()->message], 400);
+        } catch (\Stripe\Exception\InvalidRequestException $e) {
+            // Invalid request - log details but don't expose to user
+            \Illuminate\Support\Facades\Log::error('Stripe Invalid Request: ' . $e->getMessage());
+            return response()->json(['message' => 'Payment configuration error. Please contact support.'], 500);
         } catch (\Exception $e) {
+            // Generic error - log details but show generic message to user
             \Illuminate\Support\Facades\Log::error('Stripe Payment Error: ' . $e->getMessage());
             return response()->json(['message' => 'Payment processing failed. Please try again.'], 500);
         }
@@ -213,7 +240,7 @@ class PaymentController extends Controller
     public function process(Request $request)
     {
         $request->validate([
-            'payment_method' => 'required|in:stripe,crypto'
+            'payment_method' => 'required|in:stripe,crypto,flutterwave'
         ]);
 
         $donationData = Session::get('donation_data');
@@ -222,19 +249,24 @@ class PaymentController extends Controller
             return redirect()->route('donate')->with('error', 'Donation data not found. Please start over.');
         }
 
+        // Validate amount hasn't been tampered with
+        $amount = $donationData['amount'] ?? 0;
+        if (!is_numeric($amount) || $amount < 1 || $amount > 100000) {
+            return redirect()->route('donate')->with('error', 'Invalid donation amount.');
+        }
+
         $paymentMethod = $request->payment_method;
 
-        try {
-            switch ($paymentMethod) {
-                case 'stripe':
-                    return $this->processStripePayment($donationData);
-                case 'crypto':
-                    return $this->processCryptoPayment($donationData);
-                default:
-                    throw new \Exception('Invalid payment method');
-            }
-        } catch (\Exception $e) {
-            return back()->with('error', 'Payment processing failed: ' . $e->getMessage());
+        // Redirect to appropriate payment page
+        switch ($paymentMethod) {
+            case 'stripe':
+                return redirect()->route('payment.stripe');
+            case 'crypto':
+                return redirect()->route('payment.crypto');
+            case 'flutterwave':
+                return redirect()->route('payment.flutterwave');
+            default:
+                return redirect()->route('donate')->with('error', 'Invalid payment method selected.');
         }
     }
 
@@ -244,15 +276,25 @@ class PaymentController extends Controller
 
     private function processCryptoPayment($donationData)
     {
+        // Validate amount hasn't been tampered with
+        $amount = $donationData['amount'] ?? 0;
+        if (!is_numeric($amount) || $amount < 1 || $amount > 100000) {
+            throw new \Exception('Invalid donation amount');
+        }
+
         // NOWPayments API integration
-        $apiKey = config('services.nowpayments.api_key', 'DEMO_API_KEY');
+        $apiKey = config('services.nowpayments.api_key');
+        
+        if (empty($apiKey) || $apiKey === 'your_nowpayments_api_key_here') {
+            throw new \Exception('Cryptocurrency payments are not configured. Please contact support.');
+        }
 
         // Prepare payment data
         $paymentData = [
-            'price_amount' => $donationData['amount'],
+            'price_amount' => $amount,
             'price_currency' => 'aud',
             'pay_currency' => '', // Let user choose on NOWPayments page
-            'order_id' => 'DONATION_' . time() . '_' . rand(1000, 9999),
+            'order_id' => 'DONATION_' . time() . '_' . random_int(1000, 9999),
             'order_description' => 'Donation from ' . $donationData['first_name'] . ' ' . $donationData['last_name'],
             'ipn_callback_url' => route('nowpayments.ipn'),
             'success_url' => route('donation.success'),
@@ -332,27 +374,51 @@ class PaymentController extends Controller
 
     public function handleNowPaymentsIPN(Request $request)
     {
-        $ipnSecret = config('services.nowpayments.ipn_secret', 'DEMO_SECRET');
+        $ipnSecret = config('services.nowpayments.ipn_secret');
 
-        // Verify IPN signature (basic verification)
+        // Check if IPN secret is configured
+        if (empty($ipnSecret) || $ipnSecret === 'your_nowpayments_ipn_secret_here') {
+            \Illuminate\Support\Facades\Log::error('NOWPayments IPN secret is not configured');
+            return response('IPN not configured', 500);
+        }
+
+        // Verify IPN signature
         $receivedSignature = $request->header('x-nowpayments-sig');
+        if (empty($receivedSignature)) {
+            \Illuminate\Support\Facades\Log::warning('Missing NOWPayments IPN signature');
+            return response('Missing signature', 400);
+        }
+
         $expectedSignature = hash_hmac('sha512', $request->getContent(), $ipnSecret);
 
-        if (!hash_equals($expectedSignature, $receivedSignature ?? '')) {
+        if (!hash_equals($expectedSignature, $receivedSignature)) {
             \Illuminate\Support\Facades\Log::warning('Invalid NOWPayments IPN signature');
             return response('Invalid signature', 400);
         }
 
         $data = $request->all();
 
+        // Validate required fields
+        if (!isset($data['payment_status'], $data['payment_id'], $data['order_id'], $data['price_amount'])) {
+            \Illuminate\Support\Facades\Log::warning('Missing required fields in NOWPayments IPN');
+            return response('Missing required fields', 400);
+        }
+
         // Check if payment was actually paid
         if ($data['payment_status'] === 'finished' || $data['payment_status'] === 'confirmed') {
             $paymentId = $data['payment_id'];
             $orderId = $data['order_id'];
             $amount = $data['price_amount'];
-            $currency = $data['price_currency'];
-            $payAmount = $data['pay_amount'];
-            $payCurrency = $data['pay_currency'];
+            
+            // Validate amount
+            if (!is_numeric($amount) || $amount < 1 || $amount > 100000) {
+                \Illuminate\Support\Facades\Log::warning('Invalid amount in NOWPayments IPN: ' . $amount);
+                return response('Invalid amount', 400);
+            }
+            
+            $currency = $data['price_currency'] ?? 'aud';
+            $payAmount = $data['pay_amount'] ?? 0;
+            $payCurrency = $data['pay_currency'] ?? 'unknown';
 
             // Get donation data from session or database
             $donationData = Session::get('nowpayments_donation_data');

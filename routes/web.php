@@ -11,6 +11,11 @@ Route::get('/login', function () {
     return redirect('/admin/login');
 })->name('login');
 
+// Register route - redirects to admin login since this is admin-only system
+Route::get('/register', function () {
+    return redirect('/admin/login');
+})->name('register');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -19,7 +24,14 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::post('/contact', [App\Http\Controllers\PublicController::class, 'submitContact'])->name('contact.submit');
+Route::post('/contact', [App\Http\Controllers\PublicController::class, 'submitContact'])->name('contact.submit')->middleware('throttle:contact-form');
+
+// Newsletter subscription
+Route::post('/newsletter/subscribe', function (Illuminate\Http\Request $request) {
+    $request->validate(['email' => 'required|email']);
+    // Newsletter logic would go here
+    return back()->with('success', 'Thank you for subscribing!');
+})->name('newsletter.subscribe');
 
 Route::get('/programs', [App\Http\Controllers\PublicController::class, 'showPrograms'])->name('programs');
 Route::get('/programs/{program}', [App\Http\Controllers\PublicController::class, 'showProgram'])->name('programs.show');
@@ -28,7 +40,7 @@ Route::get('/volunteer', function () {
     return view('volunteer');
 })->name('volunteer');
 
-Route::post('/volunteer/apply', [App\Http\Controllers\PublicController::class, 'submitVolunteerApplication'])->name('volunteer.apply');
+Route::post('/volunteer/apply', [App\Http\Controllers\PublicController::class, 'submitVolunteerApplication'])->name('volunteer.apply')->middleware('throttle:volunteer-form');
 
 Route::get('/blog', [App\Http\Controllers\PublicController::class, 'showBlog'])->name('blog');
 Route::get('/blog/{slug}', [App\Http\Controllers\PublicController::class, 'showBlogPost'])->name('blog.show');
@@ -644,22 +656,22 @@ Route::middleware('auth')->group(function () {
 });
 
 // Payment Routes
-Route::post('/donate/submit', [App\Http\Controllers\DonationController::class, 'submit'])->name('donation.submit');
+Route::post('/donate/submit', [App\Http\Controllers\DonationController::class, 'submit'])->name('donation.submit')->middleware('throttle:5,1');
 Route::get('/payment/select', [App\Http\Controllers\DonationController::class, 'showPaymentSelection'])->name('payment.select');
-Route::post('/payment/process', [App\Http\Controllers\PaymentController::class, 'process'])->name('payment.process');
+Route::post('/payment/process', [App\Http\Controllers\PaymentController::class, 'process'])->name('payment.process')->middleware('throttle:5,1');
 Route::get('/payment/success', [App\Http\Controllers\DonationController::class, 'showSuccess'])->name('donation.success');
 
 // Stripe Payment Routes
 Route::get('/payment/stripe', [App\Http\Controllers\PaymentController::class, 'showStripePayment'])->name('payment.stripe');
-Route::post('/payment/stripe/process', [App\Http\Controllers\PaymentController::class, 'processStripePayment'])->name('payment.stripe.process');
+Route::post('/payment/stripe/process', [App\Http\Controllers\PaymentController::class, 'processStripePayment'])->name('payment.stripe.process')->middleware('throttle:5,1');
 
 // Crypto Payment Routes
 Route::get('/payment/crypto', [App\Http\Controllers\PaymentController::class, 'showCryptoPayment'])->name('payment.crypto');
-Route::post('/payment/crypto/process', [App\Http\Controllers\PaymentController::class, 'processCryptoPayment'])->name('payment.crypto.process');
+Route::post('/payment/crypto/process', [App\Http\Controllers\PaymentController::class, 'processCryptoPayment'])->name('payment.crypto.process')->middleware('throttle:5,1');
 
 // Flutterwave Payment Routes
 Route::get('/payment/flutterwave', [App\Http\Controllers\PaymentController::class, 'showFlutterwavePayment'])->name('payment.flutterwave');
-Route::post('/payment/flutterwave/verify', [App\Http\Controllers\PaymentController::class, 'verifyFlutterwavePayment'])->name('payment.flutterwave.verify');
+Route::post('/payment/flutterwave/verify', [App\Http\Controllers\PaymentController::class, 'verifyFlutterwavePayment'])->name('payment.flutterwave.verify')->middleware('throttle:10,1');
 
 
 
